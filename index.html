@@ -1,51 +1,53 @@
 <!doctype html>
-<html lang="en-GB">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Benjamin Stoter | Finance and AI</title>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Benjamin Stoter | Commercial Finance × AI</title>
+<meta name="description" content="Corporate finance, M&A and practical finance automation. Interactive valuation case study using fictional figures.">
 <style>
-body{margin:0;font:16px Arial,sans-serif;color:#16253a;background:#f2f4f7;line-height:1.55}
-header,footer{background:#14243b;color:white;padding:22px 6%}
-main{max-width:1050px;margin:auto;padding:24px}
-.hero{background:#14243b;color:white;padding:45px;border-radius:15px}
-h1{font-size:42px;margin:10px 0}h2{margin:10px 0}.gold{color:#d1ae6c}
-section{background:white;padding:26px;border-radius:12px;margin-top:20px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tile{padding:17px;border-radius:9px;background:#f2f5f8}
-.tile b{display:block;font-size:27px}label{display:inline-grid;margin:12px 16px 12px 0;font-size:13px}input,select{padding:10px;border:1px solid #ccd4dd;border-radius:7px}
-table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid #dfe5ea;padding:10px;text-align:right}th:first-child,td:first-child{text-align:left}th{background:#e7ecf1}
-button{background:#14243b;color:white;padding:11px 18px;border:0;border-radius:8px;cursor:pointer}.muted{color:#677588}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.hero{padding:28px}h1{font-size:30px}}
+:root{--navy:#13243a;--gold:#c5a15d;--ink:#202f42;--mute:#627185;--bg:#f4f6f8;--border:#dfe5ec}
+*{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;margin:0;background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:var(--navy);color:#fff;padding:18px max(20px,calc((100vw - 1080px)/2));display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}header a{color:#fff;text-decoration:none;font-size:13px}
+main{max-width:1080px;margin:auto;padding:22px 20px 60px}.hero{background:var(--navy);color:#fff;padding:43px;border-radius:14px}
+.gold{color:var(--gold)}.eyebrow{font-size:12px;font-weight:bold;letter-spacing:.09em;text-transform:uppercase}
+h1{font-size:clamp(29px,5vw,46px);line-height:1.13;margin:12px 0}h2{font-size:24px;margin:7px 0 8px}h3{font-size:17px;margin:0 0 10px}
+.hero p{color:#d7e0e9;max-width:690px}.panel{background:#fff;border:1px solid var(--border);padding:25px;border-radius:12px;margin-top:19px}
+.muted{color:var(--mute)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.kpi{background:#f2f5f8;border-radius:9px;padding:18px;border:1px solid #e8edf1}
+.kpi small{font-size:12px;color:var(--mute)}.kpi strong{font-size:26px;display:block;margin-top:5px}.controls{display:flex;flex-wrap:wrap;gap:14px;margin:18px 0}
+label{font-size:12px;color:var(--mute);font-weight:bold;display:grid;gap:6px}input,select{font:inherit;padding:9px;border:1px solid #cbd4de;border-radius:7px;min-width:135px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:23px;margin:26px 0}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;padding:9px;border-bottom:1px solid var(--border)}th:first-child,td:first-child{text-align:left}thead{background:#edf1f5}
+.wraptable{overflow-x:auto}.callout{border-left:4px solid var(--gold);padding:13px 17px;background:#f6f7f8;margin:14px 0}
+button{border:0;background:var(--navy);color:#fff;padding:11px 17px;border-radius:7px;cursor:pointer;font-weight:bold}.note{font-size:12px;color:var(--mute)}.step{padding:16px;border:1px solid var(--border);border-radius:9px}
+footer{text-align:center;padding:20px;color:var(--mute);font-size:12px}@media(max-width:750px){.grid,.two{grid-template-columns:1fr}.hero{padding:28px}.panel{padding:18px}}
 </style></head><body>
-<header><strong>BENJAMIN STOTER <span class="gold">/ FINANCE × AI</span></strong></header>
-<main><div class="hero"><p class="gold">Benjamin Stoter, CA(SA)</p><h1>Financial judgement.<br><span class="gold">Technology leverage.</span></h1><p>Corporate finance, M&A, financial modelling and AI-enabled finance transformation.</p></div>
-<section><p class="gold"><b>INTERACTIVE DEMONSTRATION</b></p><h2>M&A Financial Analysis Cockpit</h2><p class="muted">A fictional target business. All monetary amounts are in GBP thousands. No confidential data.</p>
-<label>Year<select id="year"><option>2025</option><option>2024</option><option>2023</option></select></label>
-<label>EV / EBITDA<input id="multiple" type="number" step="0.5" value="6"></label>
-<label>Extra EBITDA adjustment (£000)<input id="extra" type="number" value="0"></label>
-<label>Net debt (£000)<input id="debt" type="number" value="350"></label>
-<div class="grid"><div class="tile">Revenue<b id="revenue"></b></div><div class="tile">Adjusted EBITDA<b id="ebitda"></b></div><div class="tile">Enterprise value<b id="ev"></b></div><div class="tile">EBITDA margin<b id="margin"></b></div><div class="tile">Equity value<b id="equity"></b></div><div class="tile">Revenue growth<b id="growth"></b></div></div>
-<h2>Valuation sensitivity</h2><table><thead><tr><th>Multiple</th><th>EBITDA -10%</th><th>Base</th><th>EBITDA +10%</th></tr></thead><tbody id="sensitivity"></tbody></table>
-<h2>EBITDA bridge</h2><table><tbody id="bridge"></tbody></table>
-<p id="commentary"></p><button id="export">Export CSV</button>
-<p class="muted">Illustrative assumptions only. This demonstration uses deterministic browser calculations, not live AI or financial advice.</p></section>
-<section><h2>Future projects</h2><div class="grid"><div class="tile"><b style="font-size:19px">AI FP&A Reporting</b><p>Variance analysis and management reporting.</p></div><div class="tile"><b style="font-size:19px">Music Rights Valuation</b><p>Royalties and valuation sensitivities.</p></div><div class="tile"><b style="font-size:19px">Property Finance</b><p>Profitability and arrears forecasting.</p></div></div></section></main>
-<footer>© 2026 Benjamin Stoter. Synthetic data only.</footer>
+<header><strong>BENJAMIN STOTER <span class="gold">/ FINANCE × AI</span></strong><a href="https://github.com/benjaminstoter-arch/Public">View project on GitHub ↗</a></header>
+<main>
+<div class="hero"><div class="eyebrow gold">Benjamin Stoter, CA(SA)</div><h1>Better financial decisions.<br><span class="gold">Less manual work.</span></h1><p>I work across M&A, financial modelling and finance automation. The focus is simple: identify what drives value, find the risks and turn the analysis into action.</p></div>
+<section class="panel"><div class="eyebrow gold">Live case study · Fictional business</div><h2>Would you buy this business?</h2><p class="muted">A five-minute M&A review. Change the assumptions to see what happens to value. Figures shown in £000.</p>
+<div class="controls"><label>Financial year<select id="year"><option>2025</option><option>2024</option><option>2023</option></select></label><label>EBITDA multiple<input id="multiple" type="number" min="0" max="30" step=".5" value="6"></label><label>Extra EBITDA adjustment (£000)<input id="extra" type="number" step="10" value="0"></label><label>Net debt (£000)<input id="debt" type="number" step="25" value="350"></label></div>
+<div class="grid"><div class="kpi"><small>Revenue</small><strong id="revenue"></strong></div><div class="kpi"><small>Adjusted EBITDA</small><strong id="ebitda"></strong></div><div class="kpi"><small>Enterprise value</small><strong id="ev"></strong></div><div class="kpi"><small>Revenue growth</small><strong id="growth"></strong></div><div class="kpi"><small>EBITDA margin</small><strong id="margin"></strong></div><div class="kpi"><small>Equity value</small><strong id="equity"></strong></div></div>
+<div class="callout"><b>Commercial view</b><p id="verdict" style="margin:7px 0 0"></p></div>
+<div class="two"><div><h3>What is driving earnings?</h3><div class="wraptable"><table><tbody id="bridge"></tbody></table></div><p class="note">Illustrative adjustments are not confirmed buyer add-backs.</p></div>
+<div><h3>How has it performed?</h3><div class="wraptable"><table><thead><tr><th>£000</th><th>2023</th><th>2024</th><th>2025</th></tr></thead><tbody id="history"></tbody></table></div></div></div>
+<h3>What could it be worth?</h3><div class="wraptable"><table><thead><tr><th>EV / EBITDA</th><th>EBITDA -10%</th><th>Base</th><th>EBITDA +10%</th></tr></thead><tbody id="sensitivity"></tbody></table></div>
+<div class="two"><div><h3>Three questions before an offer</h3><p>1. Are the EBITDA adjustments genuine and recurring?</p><p>2. How much EBITDA converts into cash?</p><p>3. Are earnings dependent on a few customers or people?</p></div>
+<div><h3>Checks and next steps</h3><p>✓ EBITDA bridge reconciles<br>✓ Value recalculates with assumptions<br>✓ Enterprise value to equity bridge shown</p><p class="note">These formula checks do not independently verify financial information.</p></div></div>
+<button id="export">Export analysis CSV</button><p class="note">All company figures are fictional. No confidential information, external AI service or investment advice. Calculations are deterministic and run locally in the browser.</p>
+</section>
+<section class="panel"><div class="eyebrow gold">Practical finance automation</div><h2>What I would build next</h2><div class="grid"><div class="step"><h3>Management reporting</h3><p>Turn accounting exports into useful results, exceptions and actions.</p></div><div class="step"><h3>Deal analysis</h3><p>Speed up EBITDA bridges, debt analysis and valuation scenarios.</p></div><div class="step"><h3>Specialist valuations</h3><p>Analyse recurring income, music royalties and other cash-generating assets.</p></div></div>
+<p class="muted">The aim is not another dashboard. It is less time collecting data and more time making decisions.</p></section>
+</main><footer>© 2026 Benjamin Stoter · Finance × AI · Demonstration only</footer>
 <script>
-const records={2023:[3200,315,85],2024:[3700,420,110],2025:[4300,510,140]};
-const byId=id=>document.getElementById(id);
-const format=x=>'£'+Math.round(x).toLocaleString('en-GB')+'k';
-let values={};
-function calculate(){
- const year=Number(byId('year').value),[revenue,reported,addbacks]=records[year];
- const extra=Number(byId('extra').value),multiple=Number(byId('multiple').value),debt=Number(byId('debt').value);
- const adjusted=reported+addbacks+extra,ev=adjusted*multiple;
- values={year,revenue,reported,addbacks,extra,adjusted,multiple,ev,debt,equity:ev-debt};
- for(const [id,val] of Object.entries({revenue,ebitda:adjusted,ev,equity:ev-debt}))byId(id).textContent=format(val);
- byId('margin').textContent=(adjusted/revenue*100).toFixed(1)+'%';
- byId('growth').textContent=year===2023?'n/a':((revenue/records[year-1][0]-1)*100).toFixed(1)+'%';
- byId('bridge').innerHTML=[['Reported EBITDA',reported],['Illustrative adjustments',addbacks],['User adjustment',extra],['Adjusted EBITDA',adjusted]].map(x=>'<tr><td>'+x[0]+'</td><td>'+format(x[1])+'</td></tr>').join('');
- byId('sensitivity').innerHTML=[multiple-1,multiple,multiple+1].map(m=>'<tr><td>'+m.toFixed(1)+'x</td>'+[.9,1,1.1].map(s=>'<td>'+format(adjusted*m*s)+'</td>').join('')+'</tr>').join('');
- byId('commentary').textContent='At '+multiple.toFixed(1)+'x EBITDA, enterprise value is '+format(ev)+' and equity value is '+format(ev-debt)+'. Confirm adjustments and net debt before relying on any valuation.';
+'use strict';
+const data={2023:{revenue:3200,reported:315,addbacks:85},2024:{revenue:3700,reported:420,addbacks:110},2025:{revenue:4300,reported:510,addbacks:140}};
+const el=id=>document.getElementById(id),fmt=n=>'£'+Math.round(n).toLocaleString('en-GB')+'k';let values={};
+function calc(){const year=Number(el('year').value),d=data[year],multiple=Number(el('multiple').value),extra=Number(el('extra').value),debt=Number(el('debt').value),adj=d.reported+d.addbacks+extra,ev=adj*multiple,equity=ev-debt,margin=adj/d.revenue*100,growth=year===2023?null:(d.revenue/data[year-1].revenue-1)*100;
+values={year,revenue:d.revenue,reportedEBITDA:d.reported,baseIllustrativeAdjustments:d.addbacks,extraIllustrativeAdjustment:extra,adjustedEBITDA:adj,marginPercent:margin,revenueGrowthPercent:growth,multiple,enterpriseValue:ev,netDebt:debt,equityValue:equity};
+for(const [key,val] of Object.entries({revenue:d.revenue,ebitda:adj,ev,equity}))el(key).textContent=fmt(val);
+el('growth').textContent=growth===null?'n/a':growth.toFixed(1)+'%';el('margin').textContent=margin.toFixed(1)+'%';
+el('bridge').innerHTML=[['Reported EBITDA',d.reported],['Illustrative base adjustments',d.addbacks],['Extra adjustment',extra],['Adjusted EBITDA',adj]].map(x=>'<tr><td>'+x[0]+'</td><td>'+fmt(x[1])+'</td></tr>').join('');
+el('history').innerHTML=[['Revenue',x=>x.revenue],['Reported EBITDA',x=>x.reported],['Illustrative adjustments',x=>x.addbacks]].map(([label,fn])=>'<tr><td>'+label+'</td>'+[2023,2024,2025].map(y=>'<td>'+fmt(fn(data[y]))+'</td>').join('')+'</tr>').join('');
+el('sensitivity').innerHTML=[multiple-1,multiple,multiple+1].map(m=>'<tr><td>'+m.toFixed(1)+'×</td>'+[.9,1,1.1].map(s=>'<td>'+fmt(m*adj*s)+'</td>').join('')+'</tr>').join('');
+const trend=growth===null?'No previous year is shown for growth.':growth>=10?'Revenue growth is strong at '+growth.toFixed(1)+'%.':'Revenue growth is '+growth.toFixed(1)+'%.';
+const risk=d.addbacks+extra>0?'The valuation includes '+fmt(d.addbacks+extra)+' of assumed add-backs. Verify these before relying on the price.':'No positive add-backs are included in this scenario.';
+el('verdict').textContent=trend+' At '+multiple.toFixed(1)+'× EBITDA, enterprise value is '+fmt(ev)+' and equity value is '+fmt(equity)+'. '+risk+' Cash conversion and customer concentration still need checking.';
 }
-['year','multiple','extra','debt'].forEach(id=>byId(id).addEventListener('input',calculate));
-byId('export').addEventListener('click',()=>{const csv='Metric,Value\n'+Object.entries(values).map(x=>x.join(',')).join('\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));const a=document.createElement('a');a.href=url;a.download='ma-analysis.csv';a.click();URL.revokeObjectURL(url)});
-calculate();
+['year','multiple','extra','debt'].forEach(id=>el(id).addEventListener('input',calc));el('export').addEventListener('click',()=>{const csv='Metric,Value\r\n'+Object.entries(values).map(x=>x.join(',')).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv'})),a=document.createElement('a');a.href=url;a.download='fictional-ma-analysis.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});calc();
 </script></body></html>
