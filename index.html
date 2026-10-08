@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Benjamin Stoter | Finance and AI</title>
+<style>
+body{margin:0;font:16px Arial,sans-serif;color:#16253a;background:#f2f4f7;line-height:1.55}
+header,footer{background:#14243b;color:white;padding:22px 6%}
+main{max-width:1050px;margin:auto;padding:24px}
+.hero{background:#14243b;color:white;padding:45px;border-radius:15px}
+h1{font-size:42px;margin:10px 0}h2{margin:10px 0}.gold{color:#d1ae6c}
+section{background:white;padding:26px;border-radius:12px;margin-top:20px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tile{padding:17px;border-radius:9px;background:#f2f5f8}
+.tile b{display:block;font-size:27px}label{display:inline-grid;margin:12px 16px 12px 0;font-size:13px}input,select{padding:10px;border:1px solid #ccd4dd;border-radius:7px}
+table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid #dfe5ea;padding:10px;text-align:right}th:first-child,td:first-child{text-align:left}th{background:#e7ecf1}
+button{background:#14243b;color:white;padding:11px 18px;border:0;border-radius:8px;cursor:pointer}.muted{color:#677588}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.hero{padding:28px}h1{font-size:30px}}
+</style></head><body>
+<header><strong>BENJAMIN STOTER <span class="gold">/ FINANCE × AI</span></strong></header>
+<main><div class="hero"><p class="gold">Benjamin Stoter, CA(SA)</p><h1>Financial judgement.<br><span class="gold">Technology leverage.</span></h1><p>Corporate finance, M&A, financial modelling and AI-enabled finance transformation.</p></div>
+<section><p class="gold"><b>INTERACTIVE DEMONSTRATION</b></p><h2>M&A Financial Analysis Cockpit</h2><p class="muted">A fictional target business. All monetary amounts are in GBP thousands. No confidential data.</p>
+<label>Year<select id="year"><option>2025</option><option>2024</option><option>2023</option></select></label>
+<label>EV / EBITDA<input id="multiple" type="number" step="0.5" value="6"></label>
+<label>Extra EBITDA adjustment (£000)<input id="extra" type="number" value="0"></label>
+<label>Net debt (£000)<input id="debt" type="number" value="350"></label>
+<div class="grid"><div class="tile">Revenue<b id="revenue"></b></div><div class="tile">Adjusted EBITDA<b id="ebitda"></b></div><div class="tile">Enterprise value<b id="ev"></b></div><div class="tile">EBITDA margin<b id="margin"></b></div><div class="tile">Equity value<b id="equity"></b></div><div class="tile">Revenue growth<b id="growth"></b></div></div>
+<h2>Valuation sensitivity</h2><table><thead><tr><th>Multiple</th><th>EBITDA -10%</th><th>Base</th><th>EBITDA +10%</th></tr></thead><tbody id="sensitivity"></tbody></table>
+<h2>EBITDA bridge</h2><table><tbody id="bridge"></tbody></table>
+<p id="commentary"></p><button id="export">Export CSV</button>
+<p class="muted">Illustrative assumptions only. This demonstration uses deterministic browser calculations, not live AI or financial advice.</p></section>
+<section><h2>Future projects</h2><div class="grid"><div class="tile"><b style="font-size:19px">AI FP&A Reporting</b><p>Variance analysis and management reporting.</p></div><div class="tile"><b style="font-size:19px">Music Rights Valuation</b><p>Royalties and valuation sensitivities.</p></div><div class="tile"><b style="font-size:19px">Property Finance</b><p>Profitability and arrears forecasting.</p></div></div></section></main>
+<footer>© 2026 Benjamin Stoter. Synthetic data only.</footer>
+<script>
+const records={2023:[3200,315,85],2024:[3700,420,110],2025:[4300,510,140]};
+const byId=id=>document.getElementById(id);
+const format=x=>'£'+Math.round(x).toLocaleString('en-GB')+'k';
+let values={};
+function calculate(){
+ const year=Number(byId('year').value),[revenue,reported,addbacks]=records[year];
+ const extra=Number(byId('extra').value),multiple=Number(byId('multiple').value),debt=Number(byId('debt').value);
+ const adjusted=reported+addbacks+extra,ev=adjusted*multiple;
+ values={year,revenue,reported,addbacks,extra,adjusted,multiple,ev,debt,equity:ev-debt};
+ for(const [id,val] of Object.entries({revenue,ebitda:adjusted,ev,equity:ev-debt}))byId(id).textContent=format(val);
+ byId('margin').textContent=(adjusted/revenue*100).toFixed(1)+'%';
+ byId('growth').textContent=year===2023?'n/a':((revenue/records[year-1][0]-1)*100).toFixed(1)+'%';
+ byId('bridge').innerHTML=[['Reported EBITDA',reported],['Illustrative adjustments',addbacks],['User adjustment',extra],['Adjusted EBITDA',adjusted]].map(x=>'<tr><td>'+x[0]+'</td><td>'+format(x[1])+'</td></tr>').join('');
+ byId('sensitivity').innerHTML=[multiple-1,multiple,multiple+1].map(m=>'<tr><td>'+m.toFixed(1)+'x</td>'+[.9,1,1.1].map(s=>'<td>'+format(adjusted*m*s)+'</td>').join('')+'</tr>').join('');
+ byId('commentary').textContent='At '+multiple.toFixed(1)+'x EBITDA, enterprise value is '+format(ev)+' and equity value is '+format(ev-debt)+'. Confirm adjustments and net debt before relying on any valuation.';
+}
+['year','multiple','extra','debt'].forEach(id=>byId(id).addEventListener('input',calculate));
+byId('export').addEventListener('click',()=>{const csv='Metric,Value\n'+Object.entries(values).map(x=>x.join(',')).join('\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));const a=document.createElement('a');a.href=url;a.download='ma-analysis.csv';a.click();URL.revokeObjectURL(url)});
+calculate();
+</script></body></html>
