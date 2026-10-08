@@ -1,5 +1,35 @@
-# Finance × AI Portfolio
+# Finance × AI | Benjamin Stoter, CA(SA)
 
-Corporate finance and M&A analysis tools by Benjamin Stoter, CA(SA).
+**Better financial decisions. Less manual work.**
 
-This repository hosts an interactive financial analysis demonstration using fictional company data.
+A practical portfolio of corporate finance, M&A and finance automation projects.
+
+## Live website
+
+https://benjaminstoter-arch.github.io/Public/
+
+## Featured case study: Would you buy this business?
+
+Explore a fictional company's:
+- Revenue growth and adjusted EBITDA
+- Assumed EBITDA adjustments and earnings quality
+- Valuation multiple and enterprise value sensitivities
+- Enterprise value to equity value bridge
+- Three key buyer questions: earnings quality, cash conversion and customer concentration
+
+Change the assumptions in the browser and export the result as CSV.
+
+## Why this matters
+
+The aim is to move from collecting financial data to making commercial decisions faster, with clear assumptions and straightforward review controls.
+
+## Data and limitations
+
+All figures are synthetic. The project uses browser-based calculations, not an AI model. The illustration is not an investment recommendation. EBITDA adjustments are unverified assumptions and the formula checks do not validate source data.
+
+## Roadmap
+
+1. Financial upload and validation.
+2. Working capital and cash conversion analysis.
+3. Evidence-linked financial commentary.
+4. Exportable board-ready Excel outputs.
