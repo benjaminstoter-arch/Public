@@ -33,3 +33,9 @@ All figures are synthetic. The project uses browser-based calculations, not an A
 2. Working capital and cash conversion analysis.
 3. Evidence-linked financial commentary.
 4. Exportable board-ready Excel outputs.
+
+## Project 2: Cash conversion and working capital
+
+[Open the working capital case study](https://benjaminstoter-arch.github.io/Public/cash-conversion.html).
+
+Illustrates cash after tax, capex and working capital movements, DSO/DIO/DPO, a working capital peg and the EV-to-equity completion bridge. Uses fictional figures and simplified assumptions. It is not a full cash flow statement or a due diligence conclusion.
