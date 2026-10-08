@@ -39,3 +39,9 @@ All figures are synthetic. The project uses browser-based calculations, not an A
 [Open the working capital case study](https://benjaminstoter-arch.github.io/Public/cash-conversion.html).
 
 Illustrates cash after tax, capex and working capital movements, DSO/DIO/DPO, a working capital peg and the EV-to-equity completion bridge. Uses fictional figures and simplified assumptions. It is not a full cash flow statement or a due diligence conclusion.
+
+## Project 3: Monthly FP&A Review
+
+[Open the working monthly finance review](https://benjaminstoter-arch.github.io/Public/fpa-reporting.html).
+
+Compares actual, budget and prior-year results, highlights material variances, checks gross profit and EBITDA arithmetic, suggests follow-up actions and exports results to CSV. The prototype uses fictional data and deterministic commentary rather than live AI. Root causes are not inferred from variance values alone.
