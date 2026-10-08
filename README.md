@@ -45,3 +45,15 @@ Illustrates cash after tax, capex and working capital movements, DSO/DIO/DPO, a 
 [Open the working monthly finance review](https://benjaminstoter-arch.github.io/Public/fpa-reporting.html).
 
 Compares actual, budget and prior-year results, highlights material variances, checks gross profit and EBITDA arithmetic, suggests follow-up actions and exports results to CSV. The prototype uses fictional data and deterministic commentary rather than live AI. Root causes are not inferred from variance values alone.
+
+## Project 4: Management Accounts CSV Review
+
+[Open the CSV-to-management-report tool](https://benjaminstoter-arch.github.io/Public/fpa-upload.html) or [download the sample file](https://benjaminstoter-arch.github.io/Public/sample-management-accounts.csv).
+
+Upload a CSV with **Month, Line item, Type, Actual, Budget, Prior year**. The tool validates files, calculates revenue, gross profit and EBITDA, reconciles budget variances and proposes review actions. It exports a report CSV and management summary.
+
+- Data stays in the browser. No user financial file is sent to a server by the application.
+- Supports Revenue, Direct costs and Operating costs, with costs entered as positive amounts in GBP units.
+- Flag thresholds are editable. Commentary is deterministic and does not establish underlying causes.
+- The example is fictional and the tool is a prototype, not an accounting or assurance product.
+- Calculation and input checks: `node tests/fpa-core.test.js`.
