@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Management Accounts Review | Benjamin Stoter</title>
+<meta name="description" content="Upload a CSV and get an instant management report with variance checks and commercial actions. Client-side only.">
+<style>
+:root{--navy:#13243a;--gold:#bb974b;--ink:#23344b;--muted:#68768a;--line:#dfe5ed;--bg:#f4f6f9;--good:#23754b;--bad:#ad4c38}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.5}
+header{background:var(--navy);padding:18px max(20px,calc((100vw - 1100px)/2));color:#fff;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+header a{color:#edcf95;text-decoration:none;font-size:13px}main{max-width:1100px;margin:auto;padding:24px 20px 60px}
+.hero{background:var(--navy);color:#fff;border-radius:14px;padding:35px}.hero p{color:#dbe2ec;max-width:780px}.kicker{font-size:12px;color:var(--gold);letter-spacing:.09em;text-transform:uppercase;font-weight:700}h1{font-size:clamp(29px,5vw,43px);line-height:1.16;margin:9px 0}h2{margin:0 0 9px;font-size:23px}h3{font-size:16px;margin:0 0 10px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:18px;padding:24px}.muted{color:var(--muted)}.small{font-size:12px}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end}
+label{display:grid;gap:6px;color:#5b6c7e;font-weight:bold;font-size:12px}input,select{font:inherit;padding:10px;border:1px solid #cbd5de;border-radius:8px;background:white;color:var(--ink)}
+input[type=file]{max-width:310px}input[type=number]{width:115px}button,.btn{background:var(--navy);color:#fff;padding:11px 17px;font:600 13px Arial;border:0;border-radius:8px;cursor:pointer;text-decoration:none}
+.btn.secondary,button.secondary{background:#e9edf2;color:var(--navy)}button:disabled{opacity:.5;cursor:not-allowed}
+.status{background:#eef3f8;border-left:4px solid var(--gold);padding:12px 14px;margin-top:16px}.status.error{background:#fff0ec;border-color:var(--bad);color:#812f23}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{background:#f2f5f8;border:1px solid #e7ebf1;border-radius:10px;padding:16px}.stat small{font-size:12px;color:var(--muted)}.stat strong{font-size:25px;display:block;margin-top:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}.scroller{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}td,th{padding:9px;border-bottom:1px solid #e4e9ef;text-align:right}td:first-child,th:first-child{text-align:left}th{background:#eaf0f5;color:#3b4e64}tr.total{font-weight:bold;background:#f5f7f9}
+.flag{border-left:3px solid var(--gold);padding:10px 13px;background:#f3f5f7;margin:7px 0}.flag.bad{border-color:var(--bad)}.flag.good{border-color:var(--good)}.flag small{display:block;color:var(--muted)}
+.analysis{border-left:4px solid var(--gold);background:#f5f6f8;padding:17px;white-space:pre-line;margin:10px 0 16px}
+textarea{width:100%;height:150px;font:13px Arial;padding:13px;border:1px solid #d0dae4;border-radius:8px;resize:vertical;color:var(--ink);background:#fbfcfd}
+.check{color:var(--good);font-weight:600}.note{font-size:12px;color:var(--muted)}a{color:#254568}
+#results[hidden]{display:none}.footer{text-align:center;color:var(--muted);font-size:12px;padding:22px}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}@media(max-width:450px){.grid{grid-template-columns:1fr}.panel{padding:17px}.hero{padding:26px}}
+@media print{header,.file-controls,.no-print,.footer{display:none!important}body{background:white}main{padding:0}.panel,.hero{break-inside:avoid;border:0;border-radius:0;padding:12px 5px}.hero{background:white;color:black}.hero p{color:#555}#results{display:block!important}textarea{height:auto} }
+</style></head>
+<body>
+<header><strong>BENJAMIN STOTER <span style="color:var(--gold)">/ FINANCE × AI</span></strong><a href="./">← Back to portfolio</a></header>
+<main><section class="hero"><div class="kicker">Project 04 · Working CSV tool</div><h1>From numbers to decisions.</h1><p>Upload a management accounts CSV. Get the key variances, basic finance checks and a short management summary. No spreadsheets to rework, no invented reasons for the numbers.</p></section>
+<section class="panel file-controls"><h2>1. Load your data</h2><p class="muted">Start with the fictional example or upload your own CSV. File processing happens in this browser only. No server upload, accounts connection or external AI call.</p>
+<div class="controls"><label>Management accounts CSV<input type="file" id="file" accept=".csv,text/csv"></label><button id="demo" class="secondary">Load example</button><a class="btn secondary" href="./sample-management-accounts.csv" download>Download example CSV</a></div>
+<p class="note">Required columns: Month, Line item, Type, Actual, Budget, Prior year. One line per month and item. Type = Revenue, Direct costs or Operating costs. Amounts in GBP, costs entered as positive numbers, no commas inside amounts. Maximum 2 MB / 5,000 rows.</p>
+<div id="status" class="status" role="status" aria-live="polite">Loading example data…</div>
+</section>
+<div id="results" hidden>
+<section class="panel"><h2>2. Performance at a glance</h2><div class="controls file-controls">
+<label>Reporting month<select id="month"></select></label><label>Flag if variance exceeds (%)<input type="number" id="pct" min="0" max="100" step=".5" value="5"></label><label>And exceeds (£)<input type="number" id="amount" min="0" step="1000" value="5000"></label></div>
+<div class="grid"><div class="stat"><small>Revenue</small><strong id="rev"></strong></div><div class="stat"><small>Revenue vs budget</small><strong id="revDiff"></strong></div><div class="stat"><small>EBITDA</small><strong id="ebitda"></strong></div><div class="stat"><small>EBITDA vs budget</small><strong id="ebitdaDiff"></strong></div></div></section>
+<section class="panel"><h2>3. What changed?</h2><div class="scroller"><table><thead><tr><th>Line item</th><th>Actual</th><th>Budget</th><th>Prior year</th><th>Vs budget</th><th>Vs prior</th></tr></thead><tbody id="table"></tbody></table></div>
+<p class="note">Variances = actual less budget or prior year. Higher sales and earnings are favourable. Higher costs are adverse. Percentages use the absolute comparator and show n/m where the comparator is zero.</p></section>
+<section class="panel two"><div><h2>4. Biggest movements</h2><div id="flags"></div><h3 style="margin-top:18px">EBITDA variance bridge</h3><div class="scroller"><table><tbody id="bridge"></tbody></table></div></div><div><h2>5. Commercial view</h2><div id="summary" class="analysis"></div><h3>Suggested follow-ups</h3><div id="actions"></div></div></section>
+<section class="panel"><h2>6. Checks and outputs</h2><p id="checks" class="check"></p><p class="note">The arithmetic checks reconcile the uploaded lines but do not verify source accuracy, cut-off or accounting policy. Commentary is rule-based, not a live AI diagnosis.</p>
+<div class="controls no-print"><button id="reportCSV">Download report CSV</button><button id="reportTXT" class="secondary">Download management summary</button><button id="print" class="secondary">Print / save as PDF</button></div>
+<h3 style="margin-top:18px">Management summary text</h3><textarea id="copyText" readonly aria-label="Management summary text"></textarea>
+<p class="note">Review conclusions before sharing. Do not publish client data or exports to the public GitHub repository.</p></section>
+</div>
+</main><div class="footer">© 2026 Benjamin Stoter · Finance × AI · Private in-browser processing · Demonstration only</div>
+<script src="./fpa-core.js"></script>
+<script>
+"use strict";
+const sample=`Month,Line item,Type,Actual,Budget,Prior year
+2026-07,Existing customers,Revenue,302000,315000,281000
+2026-07,New business,Revenue,103000,105000,91000
+2026-07,Delivery costs,Direct costs,247000,245000,225000
+2026-07,Payroll,Operating costs,64000,61000,58000
+2026-07,Overheads,Operating costs,30000,30000,28000
+2026-08,Existing customers,Revenue,325000,313000,300000
+2026-08,New business,Revenue,110000,112000,90000
+2026-08,Delivery costs,Direct costs,270000,247000,235000
+2026-08,Payroll,Operating costs,65000,62000,59000
+2026-08,Overheads,Operating costs,31000,32000,30000
+2026-09,Existing customers,Revenue,299000,330000,296000
+2026-09,New business,Revenue,111000,120000,105000
+2026-09,Delivery costs,Direct costs,258000,260000,240000
+2026-09,Payroll,Operating costs,73000,63000,61000
+2026-09,Overheads,Operating costs,32000,31000,30000`;
+const $=id=>document.getElementById(id),eng=window.FPAEngine;
+let data=null,last=null,origin='Fictional example';
+const gbp=n=>{const sign=n<0?'−':'';return sign+'£'+(Math.abs(n)/100000).toLocaleString('en-GB',{minimumFractionDigits:1,maximumFractionDigits:1})+'k'};
+const full=n=>'£'+(n/100).toLocaleString('en-GB',{minimumFractionDigits:0,maximumFractionDigits:2});
+const percentage=(a,b)=>b===0?'n/m':((a-b)/Math.abs(b)*100>=0?'+':'')+((a-b)/Math.abs(b)*100).toFixed(1)+'%';
+const variance=(a,b)=>{const x=a-b;return (x>=0?'+':'−')+gbp(Math.abs(x));};
+function td(row,content){const cell=document.createElement('td');cell.textContent=content;row.append(cell);return cell}
+function rowInto(target,label,vals,emphasis=false){const tr=document.createElement('tr');if(emphasis)tr.className='total';td(tr,label);for(const x of vals)td(tr,x);target.append(tr)}
+function tag(container,heading,detail,mode){const el=document.createElement('div');el.className='flag '+mode;const strong=document.createElement('strong');strong.textContent=heading;const small=document.createElement('small');small.textContent=detail;el.append(strong,small);container.append(el)}
+function download(filename,body,type){const url=URL.createObjectURL(new Blob([body],{type:type||'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+function safeCsv(v){let t=String(v===null||v===undefined?'':v);if(/^[\s]*[=+@\-]/.test(t)&&isNaN(Number(t)))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'}
+function setStatus(message,isError){$('status').textContent=message;$('status').className='status'+(isError?' error':'');}
+function load(text,source){try{const parsed=eng.parse(text);data=parsed;origin=source;$('month').replaceChildren();for(const month of parsed.months){const option=document.createElement('option');option.value=month;option.textContent=month;$('month').append(option)}$('results').hidden=false;setStatus('Ready: '+parsed.rowCount+' lines across '+parsed.months.length+' month(s). Source: '+source+'. Nothing was uploaded.');render()}catch(e){data=null;last=null;$('results').hidden=true;setStatus('File not accepted: '+e.message,true)}}
+function render(){if(!data)return;
+const pct=Number($('pct').value),amount=Number($('amount').value);
+if(!Number.isFinite(pct)||pct<0||pct>100||!Number.isFinite(amount)||amount<0){setStatus('Use a variance threshold between 0% and 100% and a non-negative GBP amount.',true);return;}
+const r=eng.analyse(data,$('month').value,pct,amount);last=r;const t=r.totals,metrics=[['Revenue','revenue'],['Direct costs','direct'],['Gross profit','gross'],['Operating costs','opex'],['EBITDA','ebitda']];
+$('rev').textContent=gbp(t.actual.revenue);$('revDiff').textContent=variance(t.actual.revenue,t.budget.revenue);
+$('ebitda').textContent=gbp(t.actual.ebitda);$('ebitdaDiff').textContent=variance(t.actual.ebitda,t.budget.ebitda);
+const tbody=$('table');tbody.replaceChildren();
+for(const line of r.lines){rowInto(tbody,line.name+' · '+line.type,[gbp(line.actual),gbp(line.budget),gbp(line.prior),variance(line.actual,line.budget),percentage(line.actual,line.budget)])}
+for(const [name,key] of metrics){rowInto(tbody,name,[gbp(t.actual[key]),gbp(t.budget[key]),gbp(t.prior[key]),variance(t.actual[key],t.budget[key]),percentage(t.actual[key],t.budget[key])],true)}
+const list=$('flags');list.replaceChildren();
+if(!r.flags.length)tag(list,'No material movements','No line exceeds both selected thresholds.','good');
+else for(const line of r.flags.slice(0,5))tag(list,line.name+': '+variance(line.actual,line.budget)+' vs budget',line.adverse?'Adverse movement. Check what changed.':'Favourable movement. Check if it will repeat.',line.adverse?'bad':'good');
+const bridge=$('bridge');bridge.replaceChildren();
+for(const [name,value] of [['Revenue',r.bridge.revenue],['Direct costs',r.bridge.direct],['Operating costs',r.bridge.opex],['EBITDA vs budget',r.bridge.ebitda]])rowInto(bridge,name,[gbp(value)],name==='EBITDA vs budget');
+const revDelta=t.actual.revenue-t.budget.revenue,ebitDelta=t.actual.ebitda-t.budget.ebitda,pyr=t.actual.ebitda-t.prior.ebitda;
+const adverse=r.flags.filter(x=>x.adverse).slice(0,2);
+const pctEBIT=t.budget.ebitda===0?'n/m':percentage(t.actual.ebitda,t.budget.ebitda);
+const summary='Revenue '+gbp(t.actual.revenue)+', '+(revDelta>=0?gbp(revDelta)+' ahead of budget':gbp(-revDelta)+' below budget')+'. EBITDA '+gbp(t.actual.ebitda)+', '+(ebitDelta>=0?gbp(ebitDelta)+' ahead of budget':gbp(-ebitDelta)+' below budget')+' ('+pctEBIT+'). EBITDA is '+(pyr>=0?gbp(pyr)+' up':gbp(-pyr)+' down')+' on prior year. '+(adverse.length?'Largest flagged adverse item: '+adverse[0].name+' ('+gbp(Math.abs(adverse[0].diff))+' adverse). Investigate the driver before revising the forecast.':'No material adverse line items are flagged at these thresholds. Check if favourable movements are sustainable.');
+$('summary').textContent=summary;
+const actions=[];
+if(revDelta<0)actions.push('Review sales volumes, pricing and pipeline conversion.');
+if(r.flags.some(x=>x.adverse&&x.type==='Direct costs'))actions.push('Check delivery costs and gross margin by service or product.');
+if(r.flags.some(x=>x.adverse&&x.type==='Operating costs'))actions.push('Review people costs and overheads for recurring spend.');
+if(ebitDelta<0)actions.push('Update the latest EBITDA forecast and agree corrective action.');
+if(!actions.length)actions.push('Check whether the outperformance is repeatable, then refresh the forecast.');
+const acts=$('actions');acts.replaceChildren();actions.slice(0,4).forEach((a,i)=>{const p=document.createElement('p');p.textContent=(i+1)+'. '+a;acts.append(p)});
+$('checks').textContent=(r.bridgeOk?'✓ EBITDA variance bridge reconciles. ':'✗ EBITDA bridge mismatch. ')+r.rows+' unique items loaded for this month. Figures are calculated in-browser.';
+$('copyText').value='MONTHLY FINANCE REVIEW | '+r.month+'\nSource: '+origin+'\n\n'+summary+'\n\nFollow-ups:\n'+actions.map((a,i)=>(i+1)+'. '+a).join('\n')+'\n\nChecks: '+(r.bridgeOk?'EBITDA bridge reconciles.':'FAILED.')+' Source data and accounting treatment not independently verified.';
+}
+$('month').addEventListener('change',render);$('pct').addEventListener('input',render);$('amount').addEventListener('input',render);
+$('demo').addEventListener('click',()=>{$('file').value='';$('pct').value=5;$('amount').value=5000;load(sample,'Fictional example')});
+$('file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;if(file.size>2*1024*1024){setStatus('File exceeds 2 MB. Please use a smaller CSV.',true);$('results').hidden=true;return;}try{load(await file.text(),file.name)}catch(err){setStatus('Could not read CSV: '+err.message,true);$('results').hidden=true}});
+$('reportCSV').addEventListener('click',()=>{if(!last)return;const t=last.totals,lines=[['Month','Line item','Type','Actual GBP','Budget GBP','Prior year GBP']];last.lines.forEach(x=>lines.push([x.month,x.name,x.type,x.actual/100,x.budget/100,x.prior/100]));for(const metric of ['revenue','direct','gross','opex','ebitda'])lines.push([last.month,metric.toUpperCase(),'Derived',t.actual[metric]/100,t.budget[metric]/100,t.prior[metric]/100]);download('management-review-'+last.month+'.csv',lines.map(a=>a.map(safeCsv).join(',')).join('\r\n'),'text/csv;charset=utf-8')});
+$('reportTXT').addEventListener('click',()=>{if(last)download('management-summary-'+last.month+'.txt',$('copyText').value)});
+$('print').addEventListener('click',()=>window.print());
+load(sample,'Fictional example');
+</script></body></html>
