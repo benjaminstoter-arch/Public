@@ -1,0 +1,16 @@
+Month,Line item,Type,Actual,Budget,Prior year
+2026-07,Existing customers,Revenue,302000,315000,281000
+2026-07,New business,Revenue,103000,105000,91000
+2026-07,Delivery costs,Direct costs,247000,245000,225000
+2026-07,Payroll,Operating costs,64000,61000,58000
+2026-07,Overheads,Operating costs,30000,30000,28000
+2026-08,Existing customers,Revenue,325000,313000,300000
+2026-08,New business,Revenue,110000,112000,90000
+2026-08,Delivery costs,Direct costs,270000,247000,235000
+2026-08,Payroll,Operating costs,65000,62000,59000
+2026-08,Overheads,Operating costs,31000,32000,30000
+2026-09,Existing customers,Revenue,299000,330000,296000
+2026-09,New business,Revenue,111000,120000,105000
+2026-09,Delivery costs,Direct costs,258000,260000,240000
+2026-09,Payroll,Operating costs,73000,63000,61000
+2026-09,Overheads,Operating costs,32000,31000,30000
