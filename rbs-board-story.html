@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111a23">
+<meta name="description" content="RBS interactive management board review. A fictional financial reporting demonstration with 12 narrative chapters, comparison views and financial appendices.">
+<title>VeloWorks Group | September 2026 Board Review | Ross Bennet Smith</title>
+<style>
+:root{--bg:#f8f7f3;--paper:#fff;--ink:#20282d;--muted:#737977;--line:#e4e3dd;--gold:#bb974b;--gold-light:#f7efe0;--green:#326f58;--red:#ad5650;--blue:#6b7f91;--shadow:0 10px 38px rgba(32,40,45,.045);--font:Arial,Helvetica,sans-serif;--serif:Georgia,'Times New Roman',serif}
+*{box-sizing:border-box}html{scroll-behaviour:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.55}button,a{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}p{margin:0 0 13px}h1,h2,h3{margin:0}svg{display:block;max-width:100%}html.dark{--bg:#141b21;--paper:#1b252d;--ink:#edf0ec;--muted:#a9b0af;--line:#3a444a;--gold-light:#332d24;--green:#91d0b4;--red:#eea7a1;--blue:#9fbdce;--shadow:0 12px 40px rgba(0,0,0,.12)}
+.topbar{height:67px;position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line)}.topbar-inner{max-width:1540px;padding:0 35px;margin:auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:11px;white-space:nowrap;min-width:0}.brand-mark{display:grid;place-items:center;background:#21262a;color:#e6c883;width:36px;height:36px;font-family:var(--serif);font-size:20px;letter-spacing:-2px}.brand-word{font-size:14px;font-weight:800;letter-spacing:.09em}.brand-sep{color:#b5b7b4;margin:0 3px}.brand-story{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}.tools{display:flex;align-items:center;gap:10px}.compare{display:flex;border:1px solid var(--line);border-radius:8px;padding:3px;align-items:center;gap:3px}.compare-label{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;padding:0 8px}.compare button{border:0;border-radius:6px;padding:7px 12px;background:transparent;color:var(--muted);white-space:nowrap;font-size:12px}.compare button.selected{background:var(--ink);color:var(--paper);font-weight:700}.iconbtn{height:35px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:6px;padding:0 12px}.disclaimer{background:var(--gold-light);text-align:center;padding:7px 15px;color:var(--ink);font-size:11px;border-bottom:1px solid var(--line)}.rail{position:fixed;top:115px;left:calc(max(0px,(100vw - 1500px)/2) + 12px);width:145px;z-index:15}.rail ol{margin:0;padding:0;list-style:none;border-left:1px solid var(--line)}.rail a{display:flex;justify-content:space-between;align-items:center;padding:8px 10px 8px 13px;font-size:11px;color:var(--muted);transition:color .15s;background:transparent}.rail a span:last-child{font-size:10px;opacity:.7}.rail a.on{color:var(--ink);font-weight:800;border-left:3px solid var(--gold);margin-left:-2px;background:var(--gold-light)}.rail a:hover{color:var(--gold)}.wrap{max-width:1170px;margin:0 auto;padding:0 38px}.hero{min-height:calc(100vh - 95px);padding:85px 0 95px;display:flex;align-items:center;border-bottom:1px solid var(--line)}.hero-grid{display:grid;grid-template-columns:minmax(0,.93fr) minmax(0,1fr);gap:70px;align-items:center}.eyebrow{display:flex;gap:11px;align-items:center;letter-spacing:.12em;text-transform:uppercase;font-size:10px;font-weight:800;color:var(--muted);margin:0 0 30px}.eyebrow:before{content:"";height:1px;width:30px;background:var(--gold)}.display{font-family:var(--serif);font-size:clamp(48px,5.4vw,82px);line-height:1.04;letter-spacing:-.045em;font-weight:400;margin:0 0 31px}.display em,.chapter h2 em{color:var(--gold);font-weight:400}.lead{font-size:18px;line-height:1.67;max-width:490px;margin-bottom:20px}.lead-strong{font-size:15px;color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:17px;margin:24px 0;color:var(--muted);font-size:11px}.meta span:before{content:'•';color:var(--gold);margin-right:8px}.primary{display:inline-flex;align-items:center;gap:24px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:14px 20px;border-radius:5px;font-size:12px;font-weight:700}.primary:hover{background:var(--gold);border-color:var(--gold);color:#fff}.hint{font-size:11px;color:var(--muted);margin-left:15px}kbd{border:1px solid var(--line);padding:3px 6px;border-radius:3px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:5px;box-shadow:var(--shadow);overflow:hidden;min-width:0}.panel-head{min-height:48px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:12px 17px}.gold-dot{height:7px;width:7px;background:var(--gold);border-radius:50%;flex-shrink:0}.panel-title{font-size:11px;font-weight:700;letter-spacing:.01em;flex:1}.chip{font-size:10px;border:1px solid var(--line);border-radius:4px;color:var(--muted);padding:3px 7px}.panel-body{padding:22px}.hero-stat .lbl{font-size:11px;color:var(--muted)}.hero-stat strong{display:block;font-family:var(--serif);font-weight:400;letter-spacing:-.03em;font-size:56px;line-height:1.25}.up{color:var(--green);font-weight:700}.down{color:var(--red);font-weight:700}.small-muted{color:var(--muted);font-size:11px}.legend{display:flex;gap:19px;align-items:center;color:var(--muted);font-size:11px;margin-top:11px}.swatch{width:10px;height:10px;border-radius:2px;background:var(--gold);display:inline-block;margin-right:6px}.swatch.compare-swatch{background:var(--blue)}.hero-trio{border-top:1px solid var(--line);padding-top:15px;margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.hero-trio>div+div{border-left:1px solid var(--line);padding-left:13px}.hero-trio .val{font-size:19px;display:block;font-weight:700;line-height:1.8}.hero-trio .lbl{font-size:10px;display:block;color:var(--muted)}.hero-trio .sub{font-size:10px;color:var(--muted)}.chapter{min-height:790px;padding:103px 0;border-bottom:1px solid var(--line);scroll-margin-top:67px}.chapter-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:62px;align-items:start}.chapter h2{font-family:var(--serif);font-weight:400;line-height:1.1;letter-spacing:-.032em;font-size:clamp(32px,3.3vw,51px);margin:0 0 20px}.chapter-intro{font-size:14px;line-height:1.68;color:var(--muted);margin-bottom:30px}.steps{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}.step{border-bottom:1px solid var(--line);padding:0}.step-btn{display:grid;grid-template-columns:95px minmax(0,1fr);gap:13px;text-align:left;border:0;width:100%;background:transparent;color:var(--ink);padding:17px 6px}.step-btn:hover,.step.active .step-btn{background:var(--gold-light)}.step-label{font-size:11px;line-height:1.5;color:var(--gold);font-weight:700}.step-title{font-size:14px;font-weight:700;line-height:1.5}.step-desc{display:none;padding:0 12px 21px 114px;font-size:12px;line-height:1.7;color:var(--muted);margin:0}.step.active .step-desc{display:block}.step-footer{display:flex;justify-content:space-between;align-items:center;margin-top:15px}.dots{display:flex;gap:7px}.dots b{width:6px;height:6px;background:var(--line);border-radius:50%}.dots b.active{background:var(--gold)}.arrows{display:flex;gap:5px}.arrows button,.panel-toggle,.filter-buttons button,.appendix-tabs button{border:1px solid var(--line);border-radius:4px;background:var(--paper);padding:6px 10px;color:var(--ink);font-size:11px}.arrows button:hover,.panel-toggle:hover,.filter-buttons button:hover,.appendix-tabs button:hover{background:var(--gold-light)}.panel-toggle.active,.filter-buttons button.active,.appendix-tabs button.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:-22px -22px 24px;border-bottom:1px solid var(--line)}.kpi{border-right:1px solid var(--line);padding:17px 12px}.kpi:last-child{border:0}.kpi .klabel{display:block;color:var(--muted);font-size:10px}.kpi strong{display:block;font-size:19px;margin:4px 0}.kpi small{font-size:10px}.viz{min-height:265px;display:flex;flex-direction:column;justify-content:center}.viz svg{width:100%;height:auto}.chart-grid{stroke:var(--line);stroke-width:1}.chart-axis{fill:var(--muted);font-size:11px;font-family:Arial,sans-serif}.chart-actual{fill:var(--gold)}.chart-comp{fill:var(--blue);opacity:.68}.chart-line{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.chart-line2{fill:none;stroke:var(--blue);stroke-width:2;stroke-dasharray:6 5}.chart-highlight{stroke:var(--ink);stroke-width:1;opacity:.28}.footnote{border-top:1px solid var(--line);padding-top:11px;color:var(--muted);font-size:10px;margin:15px 0 0}.filter-buttons{display:flex;gap:5px;flex-wrap:wrap;margin:0 0 12px}.datawrap{overflow:auto;max-height:400px}.data-table{border-collapse:collapse;width:100%;min-width:475px;font-size:11px}.data-table th,.data-table td{padding:10px 9px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}.data-table th{color:var(--muted);font-weight:700;background:var(--bg);position:sticky;top:0}.data-table th:first-child,.data-table td:first-child{text-align:left}.data-table tr.strong td{font-weight:800;background:var(--gold-light)}.datapanel{display:none}.datapanel.show{display:block}.visualpanel.hide{display:none}.appendix{padding:100px 0 125px;scroll-margin-top:65px}.appendix h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,4vw,55px);line-height:1.15;margin-bottom:20px}.appendix-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:25px 0}.appendix .panel-body{padding:18px}.sourcebar{margin-top:20px;color:var(--muted);font-size:11px}.footer{background:#20282d;color:#f1efe8;padding:38px 0}.footerin{display:flex;justify-content:space-between;gap:30px;align-items:center}.footer .tiny{font-size:11px;opacity:.65}.btn-secondary{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:9px 12px;font-size:11px}.btn-secondary:hover{background:var(--gold-light)}.timeline{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.timeline-item{border:1px solid var(--line);padding:12px;background:var(--paper);border-left:2px solid var(--gold)}.timeline-item small{color:var(--gold);font-weight:700;letter-spacing:.1em}.timeline-item strong{display:block;margin:5px 0}.timeline-item p{font-size:11px;color:var(--muted);margin:0}.mobilechap{display:none}.tableactions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.print-hide{}@media(max-width:1350px){.rail{left:5px;width:108px}.rail a{font-size:10px}.wrap{padding-left:85px;padding-right:30px}.chapter-grid{gap:38px}.hero-grid{gap:40px}}@media(max-width:900px){.rail{display:none}.wrap{padding:0 23px}.hero{padding:60px 0;min-height:0}.hero-grid,.chapter-grid{grid-template-columns:1fr;gap:40px}.chapter{padding:75px 0;min-height:0}.chapter h2{font-size:40px}.brand-story,.hint,.compare-label{display:none}.topbar-inner{padding:0 15px}.panel{width:100%}}@media(max-width:530px){.brand-word{font-size:11px;letter-spacing:.05em}.brand-mark{width:31px;height:31px}.topbar{height:62px}.compare button{padding:7px 6px;font-size:10px}.tools{gap:5px}.iconbtn{padding:0 7px}.display{font-size:52px}.lead{font-size:16px}.panel-body{padding:16px}.kpi-grid{margin:-16px -16px 17px;grid-template-columns:repeat(2,1fr)}.kpi:nth-child(2){border-right:0}.kpi:nth-child(-n+2){border-bottom:1px solid var(--line)}.hero-trio{gap:7px}.hero-trio .val{font-size:14px}.hero-trio .lbl{font-size:9px}.step-btn{grid-template-columns:78px 1fr}.step-desc{padding-left:96px}.timeline{grid-template-columns:1fr}.footerin{display:block}.footer .tiny{margin-top:15px}}
+@media print{.topbar,.rail,.disclaimer,.arrows,.panel-toggle,.appendix-tabs,.print-hide{display:none!important}.chapter,.hero,.appendix{padding:30px 0;break-inside:avoid;min-height:0}.wrap{padding:0 20px}.chapter-grid{grid-template-columns:1fr 1fr;gap:20px}.step-desc{display:block!important}.footer{display:none}.datawrap{max-height:unset}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><a href="#top" class="brand" aria-label="Start of board review"><span class="brand-mark">R</span><span class="brand-word">ROSS BENNET SMITH</span><span class="brand-sep">/</span><span class="brand-story">VeloWorks Group · September 2026</span></a><div class="tools"><div class="compare" role="group" aria-label="Comparison"><span class="compare-label">Compare</span><button class="selected" id="bBudget" aria-pressed="true">vs Budget</button><button id="bLast" aria-pressed="false">vs Last year</button></div><button id="bTheme" class="iconbtn" aria-label="Toggle dark theme" title="Toggle theme">◐</button></div></div></header>
+<div class="disclaimer"><strong>ILLUSTRATIVE DEMO</strong> · Fictional company and financial data. Not an RBS client report or investment advice.</div>
+<nav class="rail print-hide" aria-label="Board report chapters"><ol id="railList"></ol></nav>
+<main id="main"><section class="hero" id="top"><div class="wrap"><div class="hero-grid"><div><p class="eyebrow">September 2026 Board Review · VeloWorks Group</p><h1 class="display">Sales ahead.<br><em>Profit is not.</em></h1><p class="lead" id="heroLead">Revenue is above plan, but operating profit has missed expectations for a third consecutive month.</p><p class="lead-strong lead">The central question is conversion: what proportion of gross profit reaches EBITDA, and when will margin recover?</p><div class="meta"><span>12 chapters and a six-view appendix</span><span>Figures in £000 unless stated</span><span>Illustrative only</span></div><a class="primary" href="#month">Read the story <span aria-hidden="true">↓</span></a><span class="hint"><kbd>←</kbd><kbd>→</kbd> move between chapters</span></div><div class="panel"><div class="panel-head"><i class="gold-dot"></i><span class="panel-title">Revenue by month · £m</span><span class="chip">Oct 2025–Sep 2026</span></div><div class="panel-body"><div class="hero-stat"><span class="lbl">Revenue, Jan–Sep 2026</span><strong id="heroRevenue">£85.9m</strong><span class="up" id="heroDelta">+£1.2m</span> <span class="small-muted" id="heroCompare">vs £84.7m budget</span></div><div id="heroChart" style="margin-top:16px"></div><div class="legend"><span><i class="swatch"></i>Actual</span><span><i class="swatch compare-swatch"></i><span class="lens-label">Budget</span></span></div><div class="hero-trio"><div><span class="lbl">Sep revenue</span><span class="val">£9.62m</span><span class="sub" id="heroSepVar">+2.6% vs budget</span></div><div><span class="lbl">Sep EBITDA</span><span class="val">£464k</span><span class="sub" id="heroEbitVar">−£171k vs budget</span></div><div><span class="lbl">FY26 EBITDA forecast</span><span class="val">£6.76m</span><span class="sub">−£0.55m vs budget</span></div></div></div></div></div></div></section><div id="chapters"></div><section id="appendix" class="appendix"><div class="wrap"><p class="eyebrow">A · Appendix · Three statements</p><h2>P&amp;L, balance sheet, cash flow.<br><em>Every figure, in full.</em></h2><p class="chapter-intro">Explore the same six schedules used to support the story. Change the comparison above to update the variance column throughout.</p><div class="appendix-tabs" id="appendixTabs"></div><div class="panel"><div class="panel-head"><i class="gold-dot"></i><span class="panel-title" id="appendixHeading"></span><button id="exportCSV" class="panel-toggle">↓ Export CSV</button></div><div class="panel-body"><div class="datawrap" id="appendixTable"></div><p class="footnote">£000 unless otherwise stated. Costs shown as positive amounts. Illustrative data, rounded. B/(W) means better or worse against the selected comparison.</p></div></div></div></section></main>
+<footer class="footer"><div class="wrap footerin"><div><strong>ROSS BENNET SMITH</strong><p class="tiny">Corporate Finance · Interactive financial storytelling concept</p></div><div class="tiny">Demonstration only · All financial data fictional · <a href="https://www.rossbennetsmith.com/corporate-finance" target="_blank" rel="noopener">Corporate Finance ↗</a></div></div></footer>
+<script>
+(function(){
+"use strict";
+const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'];
+const months12=['Oct','Nov','Dec'].concat(months);
+const d={
+rev:{a:[8.60,8.20,9.60,10.40,10.80,10.20,9.65,8.85,9.62],b:[8.80,8.35,9.40,10.10,10.55,10.00,9.45,8.70,9.38],l:[7.75,7.60,8.50,9.35,9.80,9.05,8.80,8.35,8.83]},
+ebit:{a:[.27,.16,.46,.92,1.02,.85,.52,.35,.464],b:[.30,.20,.48,.78,.86,.77,.61,.50,.635],l:[.20,.10,.40,.72,.82,.69,.49,.42,.58]},
+gm:{a:[30.1,29.5,31.0,32.5,33.0,32.2,30.6,29.3,30.4],b:[30.5,30.3,30.8,31.7,32.0,31.6,31.5,31.3,31.5],l:[29.1,29.3,29.7,30.8,31.6,31.0,30.1,29.8,30.8]},
+opex:{a:[2.32,2.26,2.52,2.46,2.54,2.44,2.43,2.24,2.46],b:[2.34,2.30,2.42,2.42,2.48,2.40,2.37,2.25,2.32],l:[2.16,2.08,2.23,2.25,2.30,2.24,2.24,2.17,2.20]},
+fcf:{a:[-.42,-.54,.20,.83,1.41,.12,-.62,-.94,-.88],b:[-.32,-.33,.18,.92,1.18,.35,-.28,-.19,-.11],l:[-.65,-.40,.08,.55,1.05,.21,-.44,-.52,-.60]},
+stock:{a:[23.2,25.1,26.5,25.9,23.4,22.7,23.8,24.9,25.8],b:[22.4,24.5,25.7,24.8,22.5,21.8,22.8,23.4,24.1],l:[21.8,23.2,24.8,24.0,22.6,21.7,22.1,23.0,23.7]},
+debt:{a:[13.4,14.0,14.5,14.1,12.2,12.5,13.1,13.9,14.4],b:[12.9,13.1,13.3,12.8,11.5,11.6,11.9,12.1,12.6],l:[12.1,12.5,12.8,12.3,11.3,11.5,12.0,12.4,13.0]},
+cycle:{a:[89.4,90.1,89.6,88.4,88.1,89.3,90.2,91.5,92.6],b:[89,89.2,89.3,89.1,89.1,89.3,89.7,89.9,90.2],l:[91.5,92.2,91.2,90.8,90.3,91.0,91.4,92.0,92.2]}
+};
+let lens='b',theme=false,appendixKey='pnlSep';
+const fmt=(v,digits=1)=>Number(v).toLocaleString('en-GB',{minimumFractionDigits:digits,maximumFractionDigits:digits});
+const f1=v=>fmt(v,1),signed=v=>(v>=0?'+':'−')+fmt(Math.abs(v),1);
+const sum=a=>a.reduce((s,x)=>s+x,0);
+const cmp=()=>lens==='b'?'budget':'last year';
+const pick=o=>o[lens];
+const delta=(a,b,kind='positive')=>(a-b)*(kind==='cost'?-1:1)>=0?'up':'down';
+const txt=(a,b,unit='m')=>(a>=b?'+':'−')+'£'+fmt(Math.abs(a-b),unit==='k'?0:2)+(unit==='m'?'m':'k');
+const deltaLabel=(a,b,kind='positive')=>{let positive=(a-b)*(kind==='cost'?-1:1)>=0;return '<span class="'+(positive?'up':'down')+'">'+(positive?'▲ ':'▼ ')+signed(a-b)+'</span>';};
+const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const chapters=[
+{id:'month',category:'The month',tag:'September 2026 · Scorecard',heading:['Sales beat plan.','EBITDA missed its mark.'],lead:'The September close in four numbers. Use Compare in the header to assess every page against budget or last year.',metric:'rev',chart:'bars',chartTitle:'Revenue by month · £m',units:'£m',steps:[
+['Revenue','£9.62m, ahead on sales','The September close reflects resilient shop and direct web demand; net sales exceed the September budget despite a promotional mix.'],
+['Margin','30.4%, below plan','The mix tilted towards discounted bicycles. Supplier price increases and the September campaign more than offset volume growth.'],
+['EBITDA','£464k for September','Higher direct costs and professional fees more than offset the sales beat. Conversion into operating profit is the issue.'],
+['Year to date','£5.01m EBITDA','The strong spring offset part of the summer shortfall, but July, August and September have all missed their EBITDA budgets.']]},
+{id:'revenue',category:'The month',tag:'September 2026 · Net sales',heading:['Revenue beat plan.','Discounts did the work.'],lead:'The top line outperformed, but a bigger promotional programme diluted quality of revenue.',metric:'rev',chart:'bars',chartTitle:'Revenue · actual versus comparison, £m',units:'£m',steps:[
+['September','£9.62m net sales','Gross sales of £9.91m less £0.29m of discounts. Clearance was brought forward to prepare for next season.'],
+['Discounts','£290k, 45% above budget','Mark-downs helped clear product but reduced the contribution from each sale. The £200k budget assumed a later clearance.'],
+['Gross profit','£2.92m achieved','Gross profit fell £31k short of budget despite sales beating budget by £240k.'],
+['Jan–Sep','£85.92m of revenue','Revenue is £1.19m above the original year-to-date budget. Continued growth depends on protecting gross margin.']]},
+{id:'channels',category:'The month',tag:'January–September · Sales by channel',heading:['Stores and marketplace','carry the sales beat.'],lead:'Six reporting groups show which parts of the business created the variance.',metric:'channels',chart:'variance',chartTitle:'YTD revenue variance by channel · £000',units:'£000',steps:[
+['Plan','£84.73m original sales budget','Store sales and direct e-commerce provide most of the base. Marketplace, rentals, trade and services complete the mix.'],
+['Winners','Stores +£690k, marketplace +£520k','Store refits and more marketplace traffic supported growth. The marketplace contribution carries the highest selling fees.'],
+['Offsets','Trade −£270k, rentals −£160k','A corporate fleet order moved into Q4. Rental footfall was weaker during the summer.'],
+['Other','Web +£310k, services +£100k','Online direct performed well at full price. Workshop, fitting and café services were modestly ahead.']]},
+{id:'ebitda',category:'Profit',tag:'September 2026 · EBITDA',heading:['A strong spring,','then three misses.'],lead:'April and May built a cushion. Cost inflation and a promotional mix have subsequently consumed it.',metric:'ebit',chart:'bars',chartTitle:'EBITDA by month · £m',units:'£m',steps:[
+['Spring','April and May +£300k vs budget','Early demand and strong full-price sell-through delivered the year’s best margins.'],
+['Q3','July to September −£411k','Fee inflation, product costs and stock clearance arrived together. Each quarter-three month missed plan.'],
+['Direct costs','£2.92m gross profit in September','Sales growth did not convert to gross profit growth, principally because of product cost and stock adjustments.'],
+['Overheads','£2.46m, £140k over budget','Temporary labour, technology overlap and external advisory spend drove the overhead overrun.'],
+['Result','September EBITDA £464k','Operating actions on supplier cost, channel pricing and overheads matter more than chasing more discounted volume.']]},
+{id:'margin',category:'Profit',tag:'September 2026 · Gross margin',heading:['Margin 1.1 points short.','Product costs led.'],lead:'The direct-cost pressure is a mix of pricing, procurement and the channels used to generate sales.',metric:'gm',chart:'line',chartTitle:'Gross margin percentage · by month',units:'%',steps:[
+['Gross margin','30.4% versus 31.5% plan','Margin had peaked at 33.0% in May and subsequently declined as clearance and delivery costs increased.'],
+['Product cost','Bicycles 4% dearer than planned','Purchase prices increased on late-season replenishment stock, while lower-margin bikes formed more of the sales mix.'],
+['Selling fees','Marketplace fees remain elevated','The fee structure has changed faster than marketplace selling prices.'],
+['Store labour','Labour productivity improves','Smarter scheduling helped partly offset procurement and fulfilment pressures.']]},
+{id:'mix',category:'Profit',tag:'September 2026 · Profit mix',heading:['Bikes sold more,','but earned less.'],lead:'Contribution by channel and product explains why rising sales are not bringing the profit anticipated.',metric:'mix',chart:'variance',chartTitle:'Gross-profit variance by channel · £000',units:'£000',steps:[
+['Marketplace','£90k lower gross profit','Referral fees and lower promotional pricing dilute the benefit of additional marketplace sales.'],
+['Direct web','£155k favourable gross profit','Direct web generates stronger economics and its sales exceeded expectations.'],
+['Retail stores','£70k adverse gross profit','Retail footfall was satisfactory, but clearance items absorbed too much of the sales mix.'],
+['Accessories','£40k favourable gross profit','Attach rates improved following the launch of service-and-accessory bundles.']]},
+{id:'costs',category:'Profit',tag:'September 2026 · Overheads',heading:['Overheads over plan.','Conversion has slipped.'],lead:'An operating leverage problem sits alongside the gross margin issue.',metric:'opex',chart:'bars',chartTitle:'Operating expenses by month · £m',units:'£m',steps:[
+['Overheads','£2.46m versus £2.32m budget','Temporary roles, adviser support and parallel software licences created a £140k cost overrun.'],
+['Personnel','£66k above plan','Seasonal cover ran longer than originally planned. A revised staffing model is being implemented.'],
+['Technology','£29k above plan','The previous system and new ERP are running in parallel during cut-over.'],
+['Conversion','16% of gross profit reached EBITDA','Gross margin and overhead discipline must improve together to restore normal profitability.']]},
+{id:'netprofit',category:'Below EBITDA',tag:'Jan–Sep 2026 · To net profit',heading:['Profit remains positive.','Financing takes its share.'],lead:'A bridge from operating earnings to net profit makes the impact of capex and debt explicit.',metric:'bridge',chart:'waterfall',chartTitle:'YTD EBITDA to net profit · £m',units:'£m',steps:[
+['EBITDA','£5.01m achieved','Operating performance is slightly behind the year-to-date budget.'],
+['Depreciation','£2.86m recognised','Capex is running below the original plan, partly offsetting the operating shortfall.'],
+['Interest','£0.88m finance expense','More revolving credit is needed for stock, raising the cost of financing.'],
+['Tax','£0.30m tax provision','Illustrative tax is estimated on adjusted pre-tax profit.'],
+['Net result','£0.91m year-to-date net profit','A positive bottom line, though the year-end outlook depends on margin recovery.']]},
+{id:'cash',category:'Cash and capital',tag:'September 2026 · Cash and debt',heading:['Cash went into stock.','Net debt rose.'],lead:'The inventory build absorbed cash just as profitability moderated.',metric:'fcf',chart:'bars',chartTitle:'Free cash flow by month · £m',units:'£m',steps:[
+['September','−£0.88m free cash flow','Working capital and capex more than offset the cash generated from trading.'],
+['Working capital','Stock arriving ahead of clearance','Autumn deliveries landed before the prior season’s stock fully sold through.'],
+['Financing','Net debt £14.4m','Net debt is £1.8m above September budget and has remained higher for most of the year.'],
+['Year to date','−£0.84m free cash flow','Year-to-date cash generation is weaker than planned despite the profitable spring period.']]},
+{id:'capital',category:'Cash and capital',tag:'30 September 2026 · Invested capital',heading:['Inventory above plan.','Leverage now 2.0×.'],lead:'Cash discipline and stock sell-through are essential to improving the balance sheet.',metric:'stock',chart:'line',chartTitle:'Inventory by month-end · £m',units:'£m',steps:[
+['Inventory','£25.8m, £1.7m over budget','Higher autumn receipts and clearance inventory are both sitting in the warehouse.'],
+['Seasonal peaks','£26.5m in March and £25.8m now','Seasonality is expected, but this year’s autumn stock peak is above the budget.'],
+['Capital employed','£38.9m invested capital','Inventory is the principal reason invested capital is above the original plan.'],
+['Leverage','2.0× net debt / forecast EBITDA','Below the illustrative 3.0× covenant limit, but reducing headroom versus the budget.']]},
+{id:'kpis',category:'Cash and capital',tag:'January–September · KPIs',heading:['Margins near plan.','The cash cycle is not.'],lead:'Revenue growth is healthy. Working-capital efficiency is the board’s more pressing operating issue.',metric:'cycle',chart:'line',chartTitle:'Cash conversion cycle · days',units:'days',steps:[
+['Profitability','EBITDA margin 5.8% YTD','Higher revenue supports EBITDA margin, although the improvement expected in the budget has not materialised.'],
+['Liquidity','Current ratio 2.1×','Liquidity remains adequate but is weaker than the original 2.3× budget.'],
+['Cash cycle','92.6 days at September end','The cycle has stretched since May as inventory days rose faster than payables terms.'],
+['Supplier terms','Payment terms under review','Extending supplier terms and selling seasonal stock can release cash without requiring extra sales.']]},
+{id:'outlook',category:'Outlook',tag:'FY2026–2027 · October forecast',heading:['2026 ends below plan.','2027 must rebuild margin.'],lead:'The October forecast holds recent costs until management can demonstrate savings and a recovery in pricing.',metric:'forecast',chart:'bars',chartTitle:'FY26 EBITDA by month · £m',units:'£m',steps:[
+['2026','£6.76m full-year EBITDA forecast','The business expects to miss the £7.31m annual budget by £0.55m, despite stronger revenue.'],
+['Updated view','Q4 EBITDA £1.75m implied','The forecast assumes trading normalises only gradually through the next quarter.'],
+['2027 revenue','£128.5m forecast sales','Management expects growth to continue, but revenue alone will not close the profit gap.'],
+['2027 EBITDA','£7.42m versus £8.95m outlook','The cost base needs to reset before the growth pipeline can translate into EBITDA.'],
+['Board decisions','Three commercial levers and stock','Rebid delivery, reprice marketplace items, end duplicate software cost and free cash from aged stock.']]}
+];
+const chanNames=['In-store','Direct web','Marketplace','Rentals','Trade / B2B','Services'];
+const chanBud=[42200,17300,11600,4750,6100,2780];
+const chanActual=[42890,17610,12120,4590,5830,2880];
+const chanLast=[38000,16000,10400,4650,5600,2700];
+const mixNames=['Stores','Web shop','Marketplace','Rental bikes','Accessories','Services'];
+const mixActual=[-70,155,-90,-45,40,-21],mixLast=[48,85,-55,-20,25,9];
+const overNames=['Personnel','Occupancy','Marketing','IT','Advisers','Other'];
+const overActual=[1140,720,225,163,168,44],overBudget=[1074,714,247,134,130,21],overLast=[1070,685,190,112,102,41];
+const month13=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const outlookActual=[.27,.16,.46,.92,1.02,.85,.52,.35,.464,.50,.55,.70];
+const outlookBudget=[.30,.20,.48,.78,.86,.77,.61,.50,.635,.59,.58,1.00];
+function currentData(key){return d[key]||d.rev}
+function svgBars(labels, actual, benchmark, opts={}){
+const W=640,H=300,l=36,r=14,t=25,b=43;let all=actual.concat(benchmark);let lo=Math.min(0,...all),hi=Math.max(0,...all),range=hi-lo||1;
+const Y=v=>t+(hi-v)/range*(H-t-b);let baseline=Y(0),col=(W-l-r)/labels.length,bw=Math.min(21,col*.32);let s='<svg viewBox="0 0 640 300" role="img" aria-label="'+esc(opts.title||'Comparison chart')+'">';
+for(let i=0;i<5;i++){let v=lo+range*i/4,y=Y(v);s+='<line class="chart-grid" x1="'+l+'" x2="'+(W-r)+'" y1="'+y+'" y2="'+y+'"/><text class="chart-axis" x="'+(l-6)+'" y="'+(y+4)+'" text-anchor="end">'+(Math.abs(v)<10?fmt(v,1):Math.round(v))+'</text>';}
+labels.forEach((m,i)=>{let x=l+col*i+col/2, a=actual[i],c=benchmark[i],ya=Y(a),yc=Y(c);s+='<rect class="chart-comp" x="'+(x-bw-2)+'" y="'+Math.min(yc,baseline)+'" width="'+bw+'" height="'+Math.max(1,Math.abs(baseline-yc))+'" rx="2"><title>'+esc(m)+': '+fmt(c,2)+' '+cmp()+'</title></rect><rect class="chart-actual" x="'+(x+2)+'" y="'+Math.min(ya,baseline)+'" width="'+bw+'" height="'+Math.max(1,Math.abs(baseline-ya))+'" rx="2"><title>'+esc(m)+': '+fmt(a,2)+' actual</title></rect><text class="chart-axis" x="'+x+'" y="'+(H-15)+'" text-anchor="middle">'+esc(m)+'</text>';});
+return s+'</svg>';
+}
+function svgLine(labels,a,c,opts={}){
+const W=640,H=300,l=42,r=18,t=28,b=43;let values=a.concat(c);let lo=Math.floor(Math.min(...values)-1),hi=Math.ceil(Math.max(...values)+1);if(hi-lo<3){lo-=1;hi+=1;}let X=i=>l+(W-l-r)*i/(labels.length-1),Y=v=>t+(hi-v)/(hi-lo)*(H-t-b);
+let s='<svg viewBox="0 0 640 300" role="img" aria-label="'+esc(opts.title||'Trend chart')+'">';
+for(let j=0;j<5;j++){let v=lo+(hi-lo)*j/4,y=Y(v);s+='<line class="chart-grid" x1="'+l+'" x2="'+(W-r)+'" y1="'+y+'" y2="'+y+'"/><text class="chart-axis" x="'+(l-9)+'" y="'+(y+4)+'" text-anchor="end">'+fmt(v,opts.days?0:1)+'</text>';}
+const pts=arr=>arr.map((v,i)=>X(i)+','+Y(v)).join(' ');
+s+='<polyline points="'+pts(c)+'" class="chart-line2"/><polyline points="'+pts(a)+'" class="chart-line"/>';
+a.forEach((v,i)=>{s+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="4" fill="var(--gold)"><title>'+labels[i]+' actual '+fmt(v,1)+'</title></circle><text class="chart-axis" text-anchor="middle" x="'+X(i)+'" y="'+(H-15)+'">'+labels[i]+'</text>';});
+return s+'</svg>';
+}
+function svgVariance(names,vars,title){
+let n=names.length,h=32+36*n,W=640,H=Math.max(260,h),left=206,zero=390,max=Math.max(100,...vars.map(x=>Math.abs(x)))*1.18,scale=205/max;
+let s='<svg viewBox="0 0 640 '+H+'" role="img" aria-label="'+esc(title)+'"><line x1="'+zero+'" x2="'+zero+'" y1="18" y2="'+(H-25)+'" class="chart-highlight"/>';
+names.forEach((name,i)=>{let y=25+i*36,v=vars[i],w=Math.abs(v)*scale;let x=v>=0?zero:zero-w;s+='<text x="'+(left-7)+'" y="'+(y+11)+'" text-anchor="end" class="chart-axis">'+esc(name)+'</text><rect x="'+x+'" y="'+y+'" width="'+Math.max(1,w)+'" height="17" rx="2" fill="'+(v>=0?'var(--green)':'var(--red)')+'" opacity=".85"><title>'+esc(name)+' '+(v>=0?'+':'')+v+'k</title></rect><text class="chart-axis" x="'+(v>=0?x+w+7:x-7)+'" text-anchor="'+(v>=0?'start':'end')+'" y="'+(y+12)+'">'+(v>=0?'+':'')+v+'</text>';});
+return s+'</svg>';
+}
+function chartFor(ch){
+if(ch.metric==='channels'){let b=lens==='b'?chanBud:chanLast;return svgVariance(chanNames,chanActual.map((v,i)=>v-b[i]),ch.chartTitle);}
+if(ch.metric==='mix')return svgVariance(mixNames,lens==='b'?mixActual:mixLast,ch.chartTitle);
+if(ch.metric==='bridge')return svgVariance(['EBITDA','Depreciation','Interest','Other items','Tax','Net profit'],[5014,-2860,-880,-65,-298,911],ch.chartTitle);
+if(ch.metric==='forecast')return svgBars(month13,outlookActual,lens==='b'?outlookBudget:outlookBudget.map(x=>x*.9),{title:ch.chartTitle});
+let series=currentData(ch.metric);if(ch.chart==='line')return svgLine(months,series.a,series[lens],{title:ch.chartTitle,days:ch.metric==='cycle'});return svgBars(months,series.a,series[lens],{title:ch.chartTitle});
+}
+function table(rows,headings,strongRows=[]){
+let s='<table class="data-table"><thead><tr>'+headings.map(h=>'<th scope="col">'+esc(h)+'</th>').join('')+'</tr></thead><tbody>';
+rows.forEach((r,i)=>{s+='<tr'+(strongRows.includes(i)?' class="strong"':'')+'>'+r.map((v,j)=>'<td>'+esc(v)+'</td>').join('')+'</tr>';});return s+'</tbody></table>';
+}
+function seriesTable(series,unit='£m'){
+return table(months.map((m,i)=>{let a=series.a[i],c=series[lens][i];return[m,fmt(a,2),fmt(c,2),(a>=c?'+':'')+fmt(a-c,2)];}),['Month','Actual',cmp(),'Variance']);
+}
+function otherTable(ch){
+if(ch.metric==='channels'){let c=lens==='b'?chanBud:chanLast;return table(chanNames.map((m,i)=>[m,fmt(chanActual[i],0),fmt(c[i],0),(chanActual[i]>=c[i]?'+':'')+fmt(chanActual[i]-c[i],0)]),['Channel','Actual',cmp(),'B/(W)']);}
+if(ch.metric==='mix')return table(mixNames.map((m,i)=>[m,fmt((lens==='b'?mixActual:mixLast)[i],0)]),['Channel','Gross profit variance £000']);
+if(ch.metric==='bridge')return table([['EBITDA','5,014'],['Depreciation','(2,860)'],['Interest','(880)'],['Other non-operating','(65)'],['Income tax','(298)'],['Net profit','911']],['YTD bridge','Actual £000']);
+if(ch.metric==='forecast')return table(month13.map((m,i)=>[m,fmt(outlookActual[i],2),fmt(outlookBudget[i],2)]),['Month','Forecast','Budget']);
+return seriesTable(currentData(ch.metric),ch.units);
+}
+const rail=document.getElementById('railList');
+rail.innerHTML='<li><a href="#top" data-nav="top" class="on"><span>Start</span><span>00</span></a></li>'+chapters.map((c,i)=>'<li><a href="#'+c.id+'" data-nav="'+c.id+'"><span>'+esc(c.category==='The month'?c.id==='month'?'The month':c.id==='revenue'?'Revenue':'Channels':c.id==='margin'?'Cost of sales':c.id==='costs'?'Overheads':c.id==='netprofit'?'Net profit':c.id==='capital'?'Capital':c.id==='outlook'?'Outlook':c.category==='Cash and capital'&&c.id==='kpis'?'KPIs':c.id.charAt(0).toUpperCase()+c.id.slice(1))+'</span><span>'+String(i+1).padStart(2,'0')+'</span></a></li>').join('')+'<li><a href="#appendix" data-nav="appendix"><span>Appendix</span><span>A</span></a></li>';
+const root=document.getElementById('chapters');
+function renderShell(){
+root.innerHTML=chapters.map((c,i)=>'<section id="'+c.id+'" class="chapter"><div class="wrap"><div class="chapter-grid"><div><p class="eyebrow">'+String(i+1).padStart(2,'0')+' · '+esc(c.category)+' · '+esc(c.tag)+'</p><h2>'+esc(c.heading[0])+'<br><em>'+esc(c.heading[1])+'</em></h2><p class="chapter-intro">'+esc(c.lead)+'</p><ol class="steps" id="steps-'+c.id+'"></ol><div class="step-footer"><div class="dots" id="dots-'+c.id+'"></div><div class="arrows"><button data-arrow="'+c.id+'" data-inc="-1" aria-label="Previous point">↑</button><button data-arrow="'+c.id+'" data-inc="1" aria-label="Next point">↓</button></div></div></div><div><div class="panel"><div class="panel-head"><i class="gold-dot"></i><span class="panel-title" id="panelTitle-'+c.id+'">'+esc(c.chartTitle)+'</span><span class="chip lens-label">'+(lens==='b'?'Budget':'Last year')+'</span><button class="panel-toggle" data-toggle="'+c.id+'" aria-pressed="false">Data</button></div><div class="panel-body"><div id="kpi-'+c.id+'"></div><div class="visualpanel" id="chart-'+c.id+'"></div><div class="datapanel" id="data-'+c.id+'"></div><p class="footnote">'+esc(c.units)+' unless stated · Actual vs '+cmp()+' · illustrative management data.</p></div></div>'+(c.id==='outlook'?'<div class="timeline"><div class="timeline-item"><small>DEC 2026</small><strong>Carrier rebid</strong><p>Review delivery terms before 2027 pricing is set.</p></div><div class="timeline-item"><small>NOV 2026</small><strong>Marketplace repricing</strong><p>Reset prices to reflect higher referral fees.</p></div><div class="timeline-item"><small>NOV 2026</small><strong>Overhead reset</strong><p>End ERP overlap and temporary cost.</p></div><div class="timeline-item"><small>DEC 2026</small><strong>Stock reduction</strong><p>Reduce aged product ahead of further receipts.</p></div></div>':'')+'</div></div></div></section>').join('');
+}
+const activeStep=Object.fromEntries(chapters.map(c=>[c.id,0]));
+const dataMode=Object.fromEntries(chapters.map(c=>[c.id,false]));
+function stepTitle(ch,i){
+let item=ch.steps[i];if(lens==='b')return item[1];
+let name=ch.metric,series=d[name];
+if(series&&i===0&&series.a.length){let a=series.a.at(-1),b=series.l.at(-1),type=name==='gm'?' pts':name==='cycle'?' days':'m';return item[1]+' · '+(a>=b?'+':'')+fmt(a-b,2)+type+' vs LY';}
+return item[1];
+}
+function renderChapter(c){
+let a=activeStep[c.id],list=document.getElementById('steps-'+c.id);
+list.innerHTML=c.steps.map((st,i)=>'<li class="step'+(i===a?' active':'')+'"><button type="button" class="step-btn" data-step="'+c.id+'" data-stepnum="'+i+'" aria-expanded="'+(i===a)+'"><span class="step-label">'+esc(st[0])+'</span><span class="step-title">'+esc(stepTitle(c,i))+'</span></button><p class="step-desc">'+esc(st[2])+'</p></li>').join('');
+document.getElementById('dots-'+c.id).innerHTML=c.steps.map((x,i)=>'<b class="'+(i===a?'active':'')+'"></b>').join('');
+let k=document.getElementById('kpi-'+c.id);
+if(c.id==='month'){
+let items=[['Revenue','£9.62m',d.rev.a.at(-1),d.rev[lens].at(-1)],['Gross margin','30.4%',d.gm.a.at(-1),d.gm[lens].at(-1)],['EBITDA','£464k',d.ebit.a.at(-1),d.ebit[lens].at(-1)],['EBITDA YTD','£5.01m',sum(d.ebit.a),sum(d.ebit[lens])]];
+k.innerHTML='<div class="kpi-grid">'+items.map(it=>'<div class="kpi"><span class="klabel">'+it[0]+'</span><strong>'+it[1]+'</strong><small>'+deltaLabel(it[2],it[3])+'</small></div>').join('')+'</div>';
+}else k.innerHTML='';
+document.getElementById('panelTitle-'+c.id).textContent=c.chartTitle+' · '+['Revenue','Margin','EBITDA','Cash','Outlook'][a%5]+' focus';
+document.getElementById('chart-'+c.id).innerHTML='<div class="viz">'+chartFor(c)+'</div><div class="legend"><span><i class="swatch"></i>Actual</span><span><i class="swatch compare-swatch"></i>'+ (lens==='b'?'Budget':'Last year')+'</span></div>';
+document.getElementById('data-'+c.id).innerHTML='<div class="datawrap">'+otherTable(c)+'</div>';
+document.getElementById('chart-'+c.id).classList.toggle('hide',dataMode[c.id]);
+document.getElementById('data-'+c.id).classList.toggle('show',dataMode[c.id]);
+let btn=document.querySelector('[data-toggle="'+c.id+'"]');btn.classList.toggle('active',dataMode[c.id]);btn.setAttribute('aria-pressed',String(dataMode[c.id]));btn.textContent=dataMode[c.id]?'Chart':'Data';
+}
+const appendixDefs={
+pnlSep:{name:'P&L · September',title:'September 2026 · Profit and loss',rows:[
+['Gross sales',9910,9580,8920],['Discounts',290,200,90],['Revenue',9620,9380,8830],['Cost of goods',4920,4730,4435],['Inventory adjustments',85,40,40],['Marketplace and payment fees',250,225,210],['Last-mile delivery',465,462,445],['Inbound freight',166,175,155],['Direct personnel',810,793,755],['Cost of sales',6696,6425,6040],['Gross profit',2924,2955,2790],['Gross margin %',30.4,31.5,31.6],['Personnel',1140,1074,1070],['Occupancy',720,714,685],['Marketing',225,247,190],['IT and software',163,134,112],['Advisers',168,130,102],['Other overheads',44,21,41],['Operating expenses',2460,2320,2200],['EBITDA',464,635,590],['Depreciation',300,307,301],['Interest',90,79,83],['Other non-operating',2,5,4],['Income tax',18,59,50],['Net profit',54,185,152]]},
+pnlYtd:{name:'P&L · January to September',title:'Jan–Sep 2026 · Profit and loss',rows:[
+['Gross sales',88200,86700,77800],['Discounts',2280,1970,1717],['Revenue',85920,84730,76083],['Cost of goods',44550,43825,39330],['Inventory adjustments',490,340,310],['Marketplace and payment fees',2190,1980,1790],['Direct fulfilment and delivery',4450,4320,3860],['Inbound freight',1560,1570,1380],['Direct personnel',7210,7040,6400],['Cost of sales',60450,59075,53070],['Gross profit',25470,25655,23013],['Gross margin %',29.6,30.3,30.2],['Operating expenses',20456,20520,18780],['EBITDA',5014,5135,4233],['Depreciation',2860,2950,2710],['Interest',880,820,720],['Other non-operating',65,35,42],['Income tax',298,333,190],['Net profit',911,997,571]]},
+balance:{name:'Balance sheet · invested capital',title:'30 September 2026 · Invested capital',rows:[
+['Inventory',25800,24100,23700],['Trade receivables',4900,4620,4440],['Other working assets',1720,1650,1510],['Trade payables',-7950,-8230,-7690],['Accruals and provisions',-3700,-3500,-3350],['Net working capital',20770,18640,18610],['Net fixed assets',18150,18400,17800],['Invested capital',38920,37040,36410],['Cash',4700,4600,4400],['Borrowings',19100,17200,17400],['Net debt',14400,12600,13000]]},
+capital12:{name:'Invested capital · 12 months',title:'Monthly balance sheet trends',rows:months.map((m,i)=>[m,Math.round(d.stock.a[i]*1000),Math.round(d.stock.b[i]*1000),Math.round(d.stock.l[i]*1000)])},
+cashYtd:{name:'Cash flow · January to September',title:'Jan–Sep 2026 · Cash flow',rows:[
+['EBITDA',5014,5135,4233],['Tax and cash interest',-1060,-990,-890],['Working capital movement',-2510,-940,-2000],['Operating cash flow',1444,3205,1343],['Capital expenditure',-2284,-2495,-2150],['Free cash flow',-840,710,-807],['Debt movements',1630,450,1510],['Opening cash',3910,3440,3697],['Closing cash',4700,4600,4400]]},
+cash12:{name:'Cash flow · 12 months',title:'Free cash flow by month',rows:months.map((m,i)=>[m,Math.round(d.fcf.a[i]*1000),Math.round(d.fcf.b[i]*1000),Math.round(d.fcf.l[i]*1000)])}
+};
+function formatCell(key,v){return key==='Gross margin %'?fmt(v,1)+'%':(v<0?'(':'')+fmt(Math.abs(v),0)+(v<0?')':'');}
+function refreshAppendix(){
+document.getElementById('appendixHeading').textContent=appendixDefs[appendixKey].title+' · '+(lens==='b'?'vs budget':'vs last year');
+document.getElementById('appendixTabs').innerHTML=Object.entries(appendixDefs).map(([key,x])=>'<button data-tab="'+key+'" class="'+(key===appendixKey?'active':'')+'">'+esc(x.name)+'</button>').join('');
+let rows=appendixDefs[appendixKey].rows.map(r=>{let a=r[1],b=r[lens==='b'?2:3];let cost=/Cost|Discount|Inventory adjustments|Personnel|Occupancy|Marketing|IT|Advisers|overhead|Interest|Depreciation|tax|Borrowings/i.test(r[0])&&!/Gross profit|Net profit/i.test(r[0]);let variance=cost?b-a:a-b;return[r[0],formatCell(r[0],a),formatCell(r[0],b),(variance>=0?'+':'−')+fmt(Math.abs(variance),r[0].includes('%')?1:0)];});
+let keyrows=appendixDefs[appendixKey].rows.flatMap((r,i)=>['Revenue','Gross profit','EBITDA','Net profit','Free cash flow','Invested capital','Net debt'].includes(r[0])?[i]:[]);
+document.getElementById('appendixTable').innerHTML=table(rows,['Line item','Actual',lens==='b'?'Budget':'Last year','B/(W)'],keyrows);
+}
+function renderHero(){
+let r=sum(d.rev.a),c=sum(d.rev[lens]);document.getElementById('heroRevenue').textContent='£'+fmt(r,1)+'m';
+document.getElementById('heroDelta').textContent=txt(r,c);document.getElementById('heroDelta').className=r>=c?'up':'down';document.getElementById('heroCompare').textContent='vs £'+fmt(c,1)+'m '+cmp();
+document.getElementById('heroLead').textContent='Year-to-date revenue of £'+fmt(r,1)+'m is '+fmt(100*(r-c)/c,1)+'% above '+cmp()+', but September EBITDA of £464k is below its '+cmp()+' comparator: the third monthly budget miss in a row.';
+document.getElementById('heroSepVar').textContent=(d.rev.a[8]>=d.rev[lens][8]?'+':'')+fmt(100*(d.rev.a[8]/d.rev[lens][8]-1),1)+'% vs '+cmp();
+document.getElementById('heroEbitVar').textContent=txt(d.ebit.a[8],d.ebit[lens][8])+' vs '+cmp();
+document.getElementById('heroChart').innerHTML=svgBars(months,d.rev.a,d.rev[lens],{title:'Monthly revenue'});
+document.querySelectorAll('.lens-label').forEach(x=>x.textContent=lens==='b'?'Budget':'Last year');
+}
+function setLens(x){lens=x;document.getElementById('bBudget').classList.toggle('selected',x==='b');document.getElementById('bLast').classList.toggle('selected',x==='l');document.getElementById('bBudget').setAttribute('aria-pressed',String(x==='b'));document.getElementById('bLast').setAttribute('aria-pressed',String(x==='l'));renderHero();chapters.forEach(renderChapter);refreshAppendix();}
+renderShell();setLens('b');
+document.getElementById('bBudget').addEventListener('click',()=>setLens('b'));
+document.getElementById('bLast').addEventListener('click',()=>setLens('l'));
+document.getElementById('bTheme').addEventListener('click',()=>{theme=!theme;document.documentElement.classList.toggle('dark',theme);document.getElementById('bTheme').setAttribute('aria-label',theme?'Switch to light theme':'Switch to dark theme');});
+document.addEventListener('click',e=>{
+let s=e.target.closest('[data-step]');if(s){activeStep[s.dataset.step]=Number(s.dataset.stepnum);renderChapter(chapters.find(c=>c.id===s.dataset.step));}
+let a=e.target.closest('[data-arrow]');if(a){let id=a.dataset.arrow,c=chapters.find(x=>x.id===id);activeStep[id]=(activeStep[id]+Number(a.dataset.inc)+c.steps.length)%c.steps.length;renderChapter(c);}
+let v=e.target.closest('[data-toggle]');if(v){dataMode[v.dataset.toggle]=!dataMode[v.dataset.toggle];renderChapter(chapters.find(c=>c.id===v.dataset.toggle));}
+let tab=e.target.closest('[data-tab]');if(tab){appendixKey=tab.dataset.tab;refreshAppendix();}
+});
+document.getElementById('exportCSV').addEventListener('click',()=>{
+let rows=[['Line item','Actual',lens==='b'?'Budget':'Last year','Better / (worse)']].concat(appendixDefs[appendixKey].rows.map(r=>{let a=r[1],b=r[lens==='b'?2:3];return[r[0],a,b,a-b];}));
+let csv=rows.map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\r\n');
+let blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(blob),link=document.createElement('a');link.href=u;link.download='RBS-VeloWorks-'+appendixKey+'-'+lens+'.csv';link.click();URL.revokeObjectURL(u);
+});
+const ids=['top'].concat(chapters.map(c=>c.id)).concat('appendix');
+function updateRail(){let target='top';ids.forEach(id=>{let el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<window.innerHeight*.4)target=id;});document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===target));}
+window.addEventListener('scroll',updateRail,{passive:true});updateRail();
+document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey||['INPUT','TEXTAREA','BUTTON'].includes(document.activeElement?.tagName))return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();let curr=document.querySelector('.rail a.on')?.dataset.nav||'top',i=ids.indexOf(curr),next=Math.min(ids.length-1,Math.max(0,i+(e.key==='ArrowRight'?1:-1)));document.getElementById(ids[next]).scrollIntoView({behavior:'smooth'});}});
+})();
+</script>
+</body></html>
