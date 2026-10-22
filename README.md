@@ -57,3 +57,11 @@ Upload a CSV with **Month, Line item, Type, Actual, Budget, Prior year**. The to
 - Flag thresholds are editable. Commentary is deterministic and does not establish underlying causes.
 - The example is fictional and the tool is a prototype, not an accounting or assurance product.
 - Calculation and input checks: `node tests/fpa-core.test.js`.
+
+## Project 6: Northstar CFO Control Tower
+
+[Open the interactive CFO Control Tower](https://benjaminstoter-arch.github.io/Public/northstar-cfo-control-tower.html) or [download the fictional demonstration data](https://benjaminstoter-arch.github.io/Public/northstar-cfo-control-tower-template.csv).
+
+An interactive finance and operations dashboard covering Overview, Growth, Financial and Operational performance. Includes time-period filters, individual chart breakdowns, illustrative query definitions, CSV upload, light/dark mode and print/PDF output.
+
+All company data is fictional and demonstrative. This is a browser-based prototype, not a live link to accounting, CRM or BI systems. No confidential client data is provided.
