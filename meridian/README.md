@@ -26,7 +26,7 @@ Use the period selector, comparison selector (`PY`, `BU`, `FC`), channel, market
 | `PowerBI/*.SemanticModel/definition/` | TMDL semantic model with shared dimensions, fact tables, relationships and DAX measures | **Generated and statically checked** |
 | `PowerBI/*.Report/definition/` | PBIR report structure with six pages and built-in charts, cards and slicers | **Generated and statically checked** |
 | `Ben_Stoter_Meridian_PowerBI_Theme.json` | Importable Power BI theme using gold and taupe | **Generated** |
-| `data/FactSales_1400000.csv.gz` | **1,400,000** artificial individual customer orders, gzip compressed | **Reconciled** |
+| `data/FactSales_1400000.csv.gz` | **1,400,000** artificial individual customer orders, gzip compressed; supplied in the downloadable ZIP or regenerated using `scripts/make_data.py`, not checked into public GitHub | **Reconciled** |
 | `data/FactSalesMonthly.csv` | Monthly facts, split by channel, country and category, optimised for quick Power BI testing | **Reconciled to detail** |
 | `data/FactPlan.csv` | 2026 budget and three dated forecast versions | **Reconciled** |
 | `data/Dim*.csv` | Date, channel, market, product group, plan version and comparison selectors | **Generated** |
