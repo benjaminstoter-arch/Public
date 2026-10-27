@@ -3,7 +3,7 @@
 ## Completed
 
 - Built and rendered an offline six-page interactive dashboard with working page navigation, year/period, comparison, channel, country and product group filters.
-- Chromium headless test found **zero JavaScript page errors** when rendered from embedded HTML and exercised the controls. The 2026 Jan–Sep / BU overview was captured as `Ben_Stoter_Meridian_Overview.png`.
+- The original interactive dashboard was browser-tested. The Ben Stoter rebrand has been checked in the generated HTML source and requires a final browser visual review.
 - Generated 1,400,000 synthetic detail orders for January 2023 to September 2026 and their monthly channel × country × category aggregate.
 - Generated 2026 budget, April, July and September 2026 forecast version inputs and conformed dimensions.
 - Reconciled monthly and detail revenue. See `data/qa_results.json` and run `python scripts/validate_data.py`.
