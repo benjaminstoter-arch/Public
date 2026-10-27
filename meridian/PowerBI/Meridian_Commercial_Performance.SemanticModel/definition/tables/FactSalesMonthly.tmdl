@@ -1,0 +1,129 @@
+table FactSalesMonthly
+
+	/// PeriodStart source field
+	column PeriodStart
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: PeriodStart
+
+	/// Channel source field
+	column Channel
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Channel
+
+	/// Market source field
+	column Market
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Market
+
+	/// Category source field
+	column Category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Category
+
+	/// Orders source field
+	column Orders
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Orders
+
+	/// Units source field
+	column Units
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Units
+
+	/// RevenueUSD source field
+	column RevenueUSD
+		dataType: double
+		summarizeBy: none
+		sourceColumn: RevenueUSD
+
+	/// COGSUSD source field
+	column COGSUSD
+		dataType: double
+		summarizeBy: none
+		sourceColumn: COGSUSD
+
+	/// GrossProfitUSD source field
+	column GrossProfitUSD
+		dataType: double
+		summarizeBy: none
+		sourceColumn: GrossProfitUSD
+
+	/// Revenue AC in USD unless formatted as a ratio or count
+	measure 'Revenue AC' = SUM('FactSalesMonthly'[RevenueUSD])
+		formatString: $#,##0;($#,##0)
+
+	/// COGS AC in USD unless formatted as a ratio or count
+	measure 'COGS AC' = SUM('FactSalesMonthly'[COGSUSD])
+		formatString: $#,##0;($#,##0)
+
+	/// Gross Profit AC in USD unless formatted as a ratio or count
+	measure 'Gross Profit AC' = SUM('FactSalesMonthly'[GrossProfitUSD])
+		formatString: $#,##0;($#,##0)
+
+	/// Gross Margin AC in USD unless formatted as a ratio or count
+	measure 'Gross Margin AC' = DIVIDE([Gross Profit AC],[Revenue AC])
+		formatString: 0.0%;(0.0%)
+
+	/// Orders AC in USD unless formatted as a ratio or count
+	measure 'Orders AC' = SUM('FactSalesMonthly'[Orders])
+		formatString: #,##0
+
+	/// Revenue PY in USD unless formatted as a ratio or count
+	measure 'Revenue PY' = CALCULATE([Revenue AC],DATEADD('DimDate'[Date],-1,YEAR))
+		formatString: $#,##0;($#,##0)
+
+	/// Revenue BU in USD unless formatted as a ratio or count
+	measure 'Revenue BU' = CALCULATE(SUM('FactPlan'[RevenueUSD]),'DimPlanVersion'[PlanVersion]="Budget 2026")
+		formatString: $#,##0;($#,##0)
+
+	/// Revenue FC in USD unless formatted as a ratio or count
+	measure 'Revenue FC' = CALCULATE(SUM('FactPlan'[RevenueUSD]),'DimPlanVersion'[PlanVersion]="Forecast Sep 2026")
+		formatString: $#,##0;($#,##0)
+
+	/// Revenue Compare in USD unless formatted as a ratio or count
+	measure 'Revenue Compare' = SWITCH(SELECTEDVALUE('DimComparison'[Comparison],"BU"),"PY",[Revenue PY],"BU",[Revenue BU],"FC",[Revenue FC])
+		formatString: $#,##0;($#,##0)
+
+	/// Revenue Variance in USD unless formatted as a ratio or count
+	measure 'Revenue Variance' = [Revenue AC]-[Revenue Compare]
+		formatString: $#,##0;($#,##0)
+
+	/// Revenue Variance % in USD unless formatted as a ratio or count
+	measure 'Revenue Variance %' = DIVIDE([Revenue Variance],[Revenue Compare])
+		formatString: 0.0%;(0.0%)
+
+	/// Gross Profit BU in USD unless formatted as a ratio or count
+	measure 'Gross Profit BU' = CALCULATE(SUM('FactPlan'[GrossProfitUSD]),'DimPlanVersion'[PlanVersion]="Budget 2026")
+		formatString: $#,##0;($#,##0)
+
+	/// Gross Profit FC in USD unless formatted as a ratio or count
+	measure 'Gross Profit FC' = CALCULATE(SUM('FactPlan'[GrossProfitUSD]),'DimPlanVersion'[PlanVersion]="Forecast Sep 2026")
+		formatString: $#,##0;($#,##0)
+
+	/// Gross Profit PY in USD unless formatted as a ratio or count
+	measure 'Gross Profit PY' = CALCULATE([Gross Profit AC],DATEADD('DimDate'[Date],-1,YEAR))
+		formatString: $#,##0;($#,##0)
+
+	/// Gross Profit Compare in USD unless formatted as a ratio or count
+	measure 'Gross Profit Compare' = SWITCH(SELECTEDVALUE('DimComparison'[Comparison],"BU"),"PY",[Gross Profit PY],"BU",[Gross Profit BU],"FC",[Gross Profit FC])
+		formatString: $#,##0;($#,##0)
+
+	/// Gross Profit Variance in USD unless formatted as a ratio or count
+	measure 'Gross Profit Variance' = [Gross Profit AC]-[Gross Profit Compare]
+		formatString: $#,##0;($#,##0)
+
+	partition FactSalesMonthly = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(pDataRoot & "\FactSalesMonthly.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Headers, {{"PeriodStart", type date}, {"Channel", type text}, {"Market", type text}, {"Category", type text}, {"Orders", Int64.Type}, {"Units", Int64.Type}, {"RevenueUSD", type number}, {"COGSUSD", type number}, {"GrossProfitUSD", type number}}, "en-US")
+			in
+			    Typed

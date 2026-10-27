@@ -1,0 +1,41 @@
+table DimDate
+
+	/// Unique date for time intelligence
+	column Date
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: Date
+
+	/// PeriodStart source field
+	column PeriodStart
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: PeriodStart
+
+	/// Year source field
+	column Year
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Year
+
+	/// Month source field
+	column Month
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Month
+
+	/// YearMonth source field
+	column YearMonth
+		dataType: string
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+	partition DimDate = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(pDataRoot & "\DimDate.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Headers, {{"Date", type date}, {"PeriodStart", type date}, {"Year", Int64.Type}, {"Month", Int64.Type}, {"YearMonth", type text}}, "en-US")
+			in
+			    Typed

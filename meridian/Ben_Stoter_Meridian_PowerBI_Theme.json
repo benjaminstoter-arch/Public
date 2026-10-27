@@ -1,0 +1,28 @@
+{
+  "name": "Ben Stoter | Gold and Taupe",
+  "dataColors": [
+    "#BB974B",
+    "#ACA18B",
+    "#414141",
+    "#D6C8B1",
+    "#76847C",
+    "#B95D56",
+    "#477D70",
+    "#5D6059"
+  ],
+  "background": "#FAF9F6",
+  "foreground": "#414141",
+  "tableAccent": "#BB974B",
+  "textClasses": {
+    "title": {
+      "fontFace": "Georgia",
+      "fontSize": 14,
+      "color": "#414141"
+    },
+    "label": {
+      "fontFace": "Arial",
+      "fontSize": 10,
+      "color": "#414141"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "ea81d2282798b0f20e4b",
+  "position": {
+    "x": 840,
+    "y": 533,
+    "z": 0,
+    "height": 145,
+    "width": 188,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimComparison"
+                    }
+                  },
+                  "Property": "Comparison"
+                }
+              },
+              "queryRef": "DimComparison.Comparison",
+              "nativeQueryRef": "Comparison"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

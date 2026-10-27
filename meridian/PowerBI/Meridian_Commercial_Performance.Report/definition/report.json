@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.2.0/schema.json",
+  "themeCollection": {
+    "customTheme": {
+      "name": "Ben_Stoter_Meridian_Theme.json",
+      "reportVersionAtImport": {
+        "visual": "2.7.0",
+        "report": "3.2.0",
+        "page": "2.1.0"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "filterConfig": {
+    "filters": []
+  },
+  "settings": {
+    "useEnhancedTooltips": true,
+    "useStylableVisualContainerHeader": true,
+    "defaultDrillFilterOtherVisuals": true
+  },
+  "resourcePackages": [
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Ben_Stoter_Meridian_Theme.json",
+          "path": "Ben_Stoter_Meridian_Theme.json",
+          "type": "CustomTheme"
+        }
+      ]
+    }
+  ]
+}

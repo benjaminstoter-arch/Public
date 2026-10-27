@@ -1,0 +1,13 @@
+{
+  "order_rows": 1400000,
+  "actual_revenue_usd": 857071586.56,
+  "actual_cogs_usd": 629754312.34,
+  "plan_rows": 2880,
+  "monthly_aggregate_rows": 2700,
+  "tests": {
+    "order_count": "PASS",
+    "revenue_reconciles": "PASS",
+    "gross_profit_non_negative": "PASS",
+    "forecast_versions": "PASS"
+  }
+}

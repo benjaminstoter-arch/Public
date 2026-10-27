@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Ben Stoter | Meridian Commercial Performance"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7d999abf-9e1a-48b3-9f86-aa8695d3eceb"
+  }
+}

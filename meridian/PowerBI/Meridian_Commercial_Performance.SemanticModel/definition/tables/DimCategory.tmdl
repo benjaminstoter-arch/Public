@@ -1,0 +1,17 @@
+table DimCategory
+
+	/// Category source field
+	column Category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Category
+
+	partition DimCategory = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(pDataRoot & "\DimCategory.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Headers, {{"Category", type text}}, "en-US")
+			in
+			    Typed

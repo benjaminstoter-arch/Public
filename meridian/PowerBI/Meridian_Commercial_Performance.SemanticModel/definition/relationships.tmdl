@@ -1,0 +1,35 @@
+relationship ebeae4a8-8933-4523-a417-86e7e1cd8a8e
+	fromColumn: FactSalesMonthly.PeriodStart
+	toColumn: DimDate.Date
+
+relationship f98b4e92-3fe0-4d6f-a067-7008b3e3db68
+	fromColumn: FactSalesMonthly.Channel
+	toColumn: DimChannel.Channel
+
+relationship 609eb290-1b2c-477b-8e0c-4bd32031da36
+	fromColumn: FactSalesMonthly.Market
+	toColumn: DimMarket.Market
+
+relationship a12e892b-5448-4de0-85f8-4b11d2d23dd4
+	fromColumn: FactSalesMonthly.Category
+	toColumn: DimCategory.Category
+
+relationship 3f61bb95-3080-4e4e-83b6-82ec559e7452
+	fromColumn: FactPlan.PeriodStart
+	toColumn: DimDate.Date
+
+relationship 1e8a24a6-0000-451c-910f-b8c0eba9bf19
+	fromColumn: FactPlan.Channel
+	toColumn: DimChannel.Channel
+
+relationship cfc71f91-44eb-4439-a0ab-da05159efb4c
+	fromColumn: FactPlan.Market
+	toColumn: DimMarket.Market
+
+relationship 3b78b52b-e9ac-4113-8b9a-6de6b2b6f43e
+	fromColumn: FactPlan.Category
+	toColumn: DimCategory.Category
+
+relationship 391544e6-73da-4cbb-b646-a4583878b12e
+	fromColumn: FactPlan.PlanVersion
+	toColumn: DimPlanVersion.PlanVersion

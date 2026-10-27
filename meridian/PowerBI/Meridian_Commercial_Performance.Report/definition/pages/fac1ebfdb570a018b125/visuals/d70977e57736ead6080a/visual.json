@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "d70977e57736ead6080a",
+  "position": {
+    "x": 30,
+    "y": 520,
+    "z": 0,
+    "height": 170,
+    "width": 785,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "YearMonth"
+                }
+              },
+              "queryRef": "DimDate.YearMonth",
+              "nativeQueryRef": "YearMonth"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactSalesMonthly"
+                    }
+                  },
+                  "Property": "Revenue AC"
+                }
+              },
+              "queryRef": "FactSalesMonthly.Revenue AC",
+              "nativeQueryRef": "Revenue AC"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactSalesMonthly"
+                    }
+                  },
+                  "Property": "Revenue Compare"
+                }
+              },
+              "queryRef": "FactSalesMonthly.Revenue Compare",
+              "nativeQueryRef": "Revenue Compare"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

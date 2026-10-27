@@ -1,0 +1,10 @@
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+**/.DS_Store
+
+# Generated bulk detail. Reproduce with python scripts/make_data.py
+data/FactSales_1400000.csv.gz
+
+# OS and local-only settings
+__pycache__/
+*.pyc

@@ -1,0 +1,17 @@
+table DimPlanVersion
+
+	/// PlanVersion source field
+	column PlanVersion
+		dataType: string
+		summarizeBy: none
+		sourceColumn: PlanVersion
+
+	partition DimPlanVersion = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(pDataRoot & "\DimPlanVersion.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Headers, {{"PlanVersion", type text}}, "en-US")
+			in
+			    Typed
