@@ -429,13 +429,13 @@
     },
     {
       "path": "QA_REPORT.md",
-      "size": 2038,
-      "sha256": "495f3be4053bab72c7ead2ca19ee1aff9b9f6c0573570f127ae0d6c15a680b82"
+      "size": 1999,
+      "sha256": "4f298cd2faceea2893707bbe334c08e18a088a4029ad21b41acc7776858f0ecf"
     },
     {
       "path": "README.md",
-      "size": 9481,
-      "sha256": "8393ca25be184f4b4e889f0fdc634aba7e538a3e1d2ef67549f03d3e7577ac89"
+      "size": 9591,
+      "sha256": "c8cc08f6667eb704c46b32bd05489af7421aab34a5f223232a8eff679f79bc8b"
     },
     {
       "path": "data/DimCategory.csv",
