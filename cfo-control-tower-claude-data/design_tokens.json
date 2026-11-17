@@ -1,0 +1,22 @@
+{
+  "name": "CFO Control Tower Demo - editorial-inspired blue",
+  "notice": "Recreated from article descriptions; original private design system not supplied",
+  "colours": {
+    "background": "#f4f7fb",
+    "paper": "#ffffff",
+    "navy": "#132a4d",
+    "blue": "#2868c6",
+    "paleBlue": "#eaf2ff",
+    "text": "#23364c",
+    "muted": "#77879a",
+    "line": "#e3eaf2",
+    "positive": "#13836b",
+    "negative": "#bb4d5b"
+  },
+  "font": "Inter, Aptos, system sans-serif",
+  "layout": {
+    "sidebarWidth": "15%",
+    "chartRadius": "12px",
+    "cardSpacing": "18px"
+  }
+}
